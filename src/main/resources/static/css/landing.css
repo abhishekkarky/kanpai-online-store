@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    flex-wrap: wrap;
+    font-family: 'Poppins', sans-serif;
+    background-color: #D2D2D2;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* For Header */
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    border-bottom: 2px solid black;
+}
+.logo {
+    width: 50%;
+}
+.head-img {
+    height: 100%;
+    width: 20%;
+}
+ul {
+    display: flex;
+    list-style-type: none;
+}
+ul li a {
+    padding: 0 15px;
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+}
+li a::after {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 0;
+    background: #000000;
+    transition: all .5s;
+}
+li a:hover::after {
+    width: 100%;
+}
+
+/* For main */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: .5%;
+    height: calc(270vh - 100px);
+    border-bottom: 2px solid black;
+}
+.main-img {
+    width: 95%;
+    height: 40%;
+}
+.home-img {
+    width: 100%;
+    height: 100%;
+}
+.text-one {
+    display: flex;
+    margin-top: 2%;
+    font-weight: bolder;
+    color: #9A0D0D;
+}
+.item-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+    margin-top: 2%;
+}
+.item-one {
+    margin: 1%;
+    height: 40%;
+    width: 25%;
+    background-image: url("../images/Whiskey.jpg");
+    background-size: 100% 100%;
+    box-shadow: 20px 20px 10px grey;
+}
+.item-two {
+    margin: 1%;
+    height: 40%;
+    width: 25%;
+    background-image: url("../images/Vodka.jpg");
+    background-size: 100% 100%;
+    box-shadow: 20px 20px 10px grey;
+
+}
+.item-three {
+    margin: 1%;
+    height: 40%;
+    width: 25%;
+    background-image: url("../images/Wine.jpg");
+    background-size: 100% 100%;
+    box-shadow: 20px 20px 10px grey;
+
+}
+.item-four {
+    margin: 1%;
+    height: 40%;
+    width: 25%;
+    background-image: url("../images/Gin.jpg");
+    background-size: 100% 100%;
+    box-shadow: 20px 20px 10px grey;
+}
+.item-five {
+    margin: 1%;
+    height: 40%;
+    width: 25%;
+    background-image: url("../images/Tequila.jpg");
+    background-size: 100% 100%;
+    box-shadow: 20px 20px 10px grey;
+}
+.item-six {
+    margin: 1%;
+    height: 40%;
+    width: 25%;
+    background-image: url("../images/cigarette.jpg");
+    background-size: 100% 100%;
+    box-shadow: 20px 20px 10px grey;
+}
+.item-title {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 8%;
+    text-transform: uppercase;
+    color: white;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-weight: 900;
+}
+.item-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 92%;
+    text-transform: uppercase;
+    justify-content: flex-end;
+    align-items: flex-end;
+    opacity: 0;
+    transition: opacity .40s ease;
+}
+.item-text:hover {
+    opacity: 1;
+    background-color: none;
+}
+.a-text {
+    font: 900;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    border: solid 2px white;
+}
+
+/* For Footer */
+footer {
+    margin-top: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 25vh;
+}
+.footer-logo {
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    border-right: 2px solid black;
+}
+.footer-pic {
+    width: 100%;
+}
+.footer-nav-a {
+    display: flex;
+    width: 15%;
+    border-right: 2px solid black;
+}
+.footer-ul-one {
+    display: flex;
+    flex-direction: column;
+    list-style-type: disc;
+}
+.footer-a {
+    padding: 8px 0px;
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+}
+.footer-nav-b {
+    display: flex;
+    width: 15%;
+}
+.footer-ul-two {
+    display: flex;
+    flex-direction: column;
+    list-style-type: disc;
+}
+.footer-b {
+    margin-top: 1%;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+}
+h5 {
+    font-size: 9px;
+}
+
+
+
+
+
+
+
+
+

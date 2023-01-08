@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="icon" sizes="200x200" th:href="@{/images/kanpai-logo-icon.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img class="head-img" th:src="@{/images/Kanpai_logo.png}" alt="">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../template/kanpai_dashboard.html">Home</a></li>
+                <li><a href="../template/kanpai_dashboard.html#products-section">Products</a></li>
+                <li><a href="">Contact us</a></li>
+                <li><a href="">About us</a></li>
+                <li><a href="../template/registration.html">Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="container-left">
+                <img class="container-left-logo" th:src="@{/images/Kanpai_logo.png}" alt="">
+            </div>
+            <div class="container-right">
+                <form th:method="post" th:action="@{/user/save}" th:object="${user}">
+                    <div class="h2-text">
+                        <h2 class="h2">
+                            Registration Form
+                        </h2>
+                    </div>
+                    <div class="for-fields">
+                        <input class="input" type="text" id="f-name" name="FName" placeholder="First Name..." required th:field="*{FName}" th:value="${user.FName}">
+                        <input class="input" type="text" id="l-name" name="LName" placeholder="Last Name..." required th:field="*{LName}" th:value="${user.LName}">
+                        <input class="input" type="email" id="p-number" name="email" placeholder="Email-address..." required th:field="*{email}" th:value="${user.email}">
+                        <input class="input" type="password" id="create-password" name="password" placeholder="Create a password..." required th:field="*{password}" th:value="${user.password}">
+                        <button class="signup-button" type="submit">Signup</button>
+                    </div>
+                    <div class="for-login">
+                        <h5>Already have an account?<a href="../template/login.html">Login here...</a></h5>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
