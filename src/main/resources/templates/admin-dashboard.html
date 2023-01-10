@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Dashboard</title>
+    <link rel="icon" sizes="200x200" th:href="@{/images/kanpai-logo-icon.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin-dashboard}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<!--    <link href="Bootstrap/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <script src="Bootstrap/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.js" defer></script>-->
+</head>
+<body>
+
+
+
+    <main>
+        <div class="row">
+            <div class="col-lg-4">
+                <ul class="list-group">
+                    <li class="list-group-item" id="customers">Customers</li>
+                    <li class="list-group-item">Orders</li>
+                    <li class="list-group-item">Add Product</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+
+</body>
+
+<script>
+    let myPage = "Customers";
+    let listGroupItem = Array.from(document.getElementsByClassName("list-group-item"));
+    listGroupItem.forEach(i=>{
+        i.classList.remove("active")
+    })
+    let activeID = document.getElementById(myPage);
+    activeID.classList.add("active");
+</script>
+
+</html>

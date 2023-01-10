@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    flex-wrap: wrap;
+    font-family: 'Poppins', sans-serif;
+    background-color: #D2D2D2;
+}
