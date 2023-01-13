@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <!-- <link rel="stylesheet" type="text/css" th:href="@{/css/admin-dashboard.css}"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="add_product.css">
+  <link rel="stylesheet" href="admin_dashboard.css">
+
+</head>
+<body>
+
+<div class="grid-container">
+
+  <header class="header">
+    <div class="menu-icon" onclick="openSidebar()">
+      <span class="material-icons-outlined">menu</span>
+    </div>
+    <div class="main-title">
+      <h2>Add Product</h2>
+    </div>
+
+  </header>
+
+  <aside id="sidebar">
+
+    <div class="sidebar-title">
+      <img src="man.png" height="40px" width="40px" alt="">
+      <h4 class="profile-text">Profile</h4>
+      <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+    </div>
+
+    <ul class="sidebar-list">
+      <li class="sidebar-list-item">
+        <a href="admin_dashboard.html">Dashboard</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="order_list.html">Orders</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="add_product.html">Add Products</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="#">Create Coupons</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="#">Notify Customers</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="#">Settings</a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-container">
+    <form>
+      <div class="form-container">
+        <label for="Categories">Choose a Category:</label>
+        <select name="product" id="product">
+          <option value="whiskey">Whiskey</option>
+          <option value="vodka">Vodka</option>
+          <option value="wine">Wine</option>
+          <option value="gin">Gin</option>
+          <option value="tequila">Tequila</option>
+          <option value="tobacco">tobacco</option>
+        </select>
+      </div>
+      <div class="form-fields">
+        <input type="file" name="product-photo" id="product-photo">
+        <input type="text" name="product-name" id="product-name" placeholder="Enter the product's name...">
+        <input type="text" name="product-volume" id="product-volume" placeholder="Enter the product's volume...">
+        <input type="text" name="product-quantity" id="product-quantity" placeholder="Enter the product's quantity...">
+        <input type="text" name="product-price" id="product-price" placeholder="Enter the product's price...">
+        <button type="submit">Add product</button>
+      </div>
+    </form>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+<script src="admin_dashboard.js"></script>
+</body>
+</html>
