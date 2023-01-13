@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminController {
     @GetMapping("/admin-dashboard")
     public String getAdminPage() {
-        return ("admin-dashboard");
+        return ("admin_dashboard");
     }
 }
