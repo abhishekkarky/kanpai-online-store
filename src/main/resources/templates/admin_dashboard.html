@@ -25,29 +25,26 @@
     <aside id="sidebar">
 
         <div class="sidebar-title">
-            <img src="man.png" height="40px" width="40px" alt="">
+            <img th:src="@{/images/man.png}" height="40px" width="40px" alt="">
             <h4 class="profile-text">Profile</h4>
             <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
 
         <ul class="sidebar-list">
             <li class="sidebar-list-item">
-                <a href="admin_dashboard.html">Dashboard</a>
+                <a th:href="@{/admin/dashboard}">Dashboard</a>
             </li>
             <li class="sidebar-list-item">
-                <a href="order_list.html">Orders</a>
+                <a th:href="@{/admin/order-list}">Orders</a>
             </li>
             <li class="sidebar-list-item">
-                <a href="add_product.html">Add Products</a>
+                <a th:href="@{/admin/add-product}">Add Products</a>
             </li>
             <li class="sidebar-list-item">
-                <a href="#">Create Coupons</a>
+                <a th:href="@{/admin/notify}">Notify Customers</a>
             </li>
             <li class="sidebar-list-item">
-                <a href="#">Notify Customers</a>
-            </li>
-            <li class="sidebar-list-item">
-                <a href="#">Settings</a>
+                <a th:href="@{/admin/settings}">Settings</a>
             </li>
         </ul>
     </aside>
@@ -99,6 +96,6 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
-<script src="admin_dashboard.js"></script>
+<script type="text/javascript" th:src="@{/javascript/admin_dashboard.js}"></script>
 </body>
 </html>

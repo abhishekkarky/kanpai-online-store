@@ -9,8 +9,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/admin")
 public class AdminController {
-    @GetMapping("/admin-dashboard")
+    @GetMapping("/dashboard")
     public String getAdminPage() {
-        return ("admin_dashboard");
+        return "admin_dashboard";
+    }
+
+    @GetMapping("/add-product")
+    public String getAddProductPage() {
+        return "add_product";
+    }
+
+    @GetMapping("/order-list")
+    public String getOrderListPage() {
+        return "order_list";
+    }
+
+    @GetMapping("/notify")
+    public String getNotifyCustomersPage() {
+        return "notify_customers";
+    }
+
+    @GetMapping("/settings")
+    public String getAdminSettingsPage() {
+        return "admin_settings";
     }
 }
