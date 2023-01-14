@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <!-- <link rel="stylesheet" type="text/css" th:href="@{/css/admin-dashboard.css}"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="notify_customers.css">
+  <link rel="stylesheet" href="admin_dashboard.css">
+
+</head>
+<body>
+
+<div class="grid-container">
+
+  <header class="header">
+    <div class="menu-icon" onclick="openSidebar()">
+      <span class="material-icons-outlined">menu</span>
+    </div>
+    <div class="main-title">
+      <h2>Notify Customers</h2>
+    </div>
+
+  </header>
+
+  <aside id="sidebar">
+
+    <div class="sidebar-title">
+      <img src="man.png" height="40px" width="40px" alt="">
+      <h4 class="profile-text">Profile</h4>
+      <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+    </div>
+
+    <ul class="sidebar-list">
+      <li class="sidebar-list-item">
+        <a href="admin_dashboard.html">Dashboard</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="order_list.html">Orders</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="add_product.html">Add Products</a>
+      </li>
+      <!-- <li class="sidebar-list-item">
+        <a href="#">Create Coupons</a>
+      </li> -->
+      <li class="sidebar-list-item">
+        <a href="notify_customers.html">Notify Customers</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="admin_settings.html">Settings</a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-container">
+    <form>
+      <input class="title" type="text" name="notification-title" id="title" placeholder="Enter the notification title...">
+      <textarea class="description" name="notification-description" id="description" placeholder="Enter the notification description..."></textarea>
+      <button type="submit">Send notifications</button>
+    </form>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+<script src="admin_dashboard.js"></script>
+</body>
+</html>
