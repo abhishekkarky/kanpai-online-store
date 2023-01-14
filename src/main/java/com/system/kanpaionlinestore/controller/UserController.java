@@ -35,4 +35,9 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/cart")
+    public String getCartPage() {
+        return "cart_page";
+    }
+
 }
