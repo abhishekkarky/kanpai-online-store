@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Admin Dashboard</title>
-     <link rel="stylesheet" type="text/css" th:href="@{/css/admin_dashboard.css}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/add_product.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin_dashboard.css}">
 </head>
 <body>
 
@@ -17,7 +18,7 @@
             <span class="material-icons-outlined">menu</span>
         </div>
         <div class="main-title">
-            <h2>DASHBOARD</h2>
+            <h2>Add Vodka</h2>
         </div>
 
     </header>
@@ -69,50 +70,17 @@
 
     <!-- Main -->
     <main class="main-container">
-
-        <div class="main-cards">
-
-            <div class="card">
-                <div class="card-inner">
-                    <h3>TOTAL PRODUCTS</h3>
-                </div>
-                <h1>249</h1>
+        <form th:method="post" th:action="@{/admin/save/product-vodka}" th:object="${product_vodka}" enctype="multipart/form-data">
+            <div class="form-fields">
+                <input type="file" name="product-photo" id="product-photo" required th:field="*{product_photo}">
+                <input type="text" name="product-name" id="product-name" placeholder="Enter the product's name..." required th:field="*{product_name}">
+                <input type="text" name="product-quantity" id="product-quantity" placeholder="Enter the product's quantity..." required th:field="*{product_quantity}">
+                <input type="text" name="product-price" id="product-price" placeholder="Enter the product's price..." required th:field="*{product_price}">
+                <button type="submit">Add product</button>
             </div>
-
-            <div class="card">
-                <div class="card-inner">
-                    <h3>ORDERS</h3>
-                </div>
-                <h1>25</h1>
-            </div>
-
-            <div class="card">
-                <div class="card-inner">
-                    <h3>TOTAL SELLS</h3>
-                </div>
-                <h1>25000</h1>
-            </div>
-
-        </div>
-
-        <div class="charts">
-
-            <div class="charts-card">
-                <h2 class="chart-title">Top 5 Products</h2>
-                <div id="bar-chart"></div>
-            </div>
-
-            <div class="charts-card">
-                <h2 class="chart-title">Sales Orders</h2>
-                <div id="area-chart"></div>
-            </div>
-
-        </div>
-
+        </form>
     </main>
-
 </div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
 <script type="text/javascript" th:src="@{/javascript/admin_dashboard.js}"></script>
 </body>

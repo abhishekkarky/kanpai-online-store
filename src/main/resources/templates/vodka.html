@@ -32,133 +32,133 @@
             </div>
             <div class="main-item-container">
                 <div class="item-container">
-                    <div class="items">
+                    <div class="items" th:each="products:${product_vodka}">
                         <div class="for-image">
                             <div class="image">
-                                <img src="" alt="">
+                                <img th:src="'data:image/png;base64,'+${products.imageBase64}">
                             </div>
                             <div class="image-title">
-                                <p>image-title</p>
+                                <p th:text="${products.product_name}"></p>
                             </div>
                         </div>
                         <div class="for-description">
-                            <h3>Rs 2000</h3>
+                            <h3 th:text="${products.product_price}"></h3>
                             <button class="button-one">Add to Cart</button>
                         </div>
                     </div>
                 </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 2000</h3>
-                            <button class="button-two">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 2000</h3>
-                            <button class="button-three">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 2000</h3>
-                            <button class="button-four">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 2000</h3>
-                            <button class="button-five">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 2000</h3>
-                            <button class="button-six">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 2000</h3>
-                            <button class="button-seven">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 2000</h3>
-                            <button class="button-eight">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 2000</h3>-->
+<!--                            <button class="button-two">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 2000</h3>-->
+<!--                            <button class="button-three">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 2000</h3>-->
+<!--                            <button class="button-four">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 2000</h3>-->
+<!--                            <button class="button-five">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 2000</h3>-->
+<!--                            <button class="button-six">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 2000</h3>-->
+<!--                            <button class="button-seven">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 2000</h3>-->
+<!--                            <button class="button-eight">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </main>

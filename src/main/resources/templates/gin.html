@@ -5,23 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whiskey</title>
-    <link rel="icon" sizes="200x200" href="../static/images/kanpai-logo-icon.png">
-    <link rel="stylesheet" href="../static/css/product_gin.css">
+    <link rel="icon" sizes="200x200" th:href="@{/images/kanpai-logo-icon.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/product_gin.css}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <script src="" defer></script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img class="head-img" src="../static/images/Kanpai_logo.png" alt="">
+            <img class="head-img" th:src="@{/images/Kanpai_logo.png}" alt="">
         </div>
         <nav>
             <ul>
-                <li><a href="../template/kanpai_dashboard.html">Home</a></li>
+                <li><a th:href="@{/landing}">Home</a></li>
                 <li><a href="../template/kanpai_dashboard.html#products-section">Products</a></li>
                 <li><a href="">Contact us</a></li>
                 <li><a href="">About us</a></li>
-                <li><a href="../template/registration.html">Signup</a></li>
+                <li><a th:href="@{/user/create}">Signup</a></li>
             </ul>
         </nav>
     </header>
@@ -32,139 +32,139 @@
             </div>
             <div class="main-item-container">
                 <div class="item-container">
-                    <div class="items">
+                    <div class="items" th:each="products:${product_gin}">
                         <div class="for-image">
                             <div class="image">
-                                <img src="" alt="">
+                                <img th:src="'data:image/png;base64,'+${products.imageBase64}">
                             </div>
                             <div class="image-title">
-                                <p>image-title</p>
+                                <p th:text="${products.product_name}"></p>
                             </div>
                         </div>
                         <div class="for-description">
-                            <h3>Rs 1000</h3>
+                            <h3 th:text="${products.product_price}"></h3>
                             <button class="button-one">Add to Cart</button>
                         </div>
                     </div>
                 </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 1000</h3>
-                            <button class="button-two">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 1000</h3>
-                            <button class="button-three">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 1000</h3>
-                            <button class="button-four">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 1000</h3>
-                            <button class="button-five">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 1000</h3>
-                            <button class="button-six">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 1000</h3>
-                            <button class="button-seven">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <div class="items">
-                        <div class="for-image">
-                            <div class="image">
-                                <img src="" alt="">
-                            </div>
-                            <div class="image-title">
-                                <p>image-title</p>
-                            </div>
-                        </div>
-                        <div class="for-description">
-                            <h3>Rs 1000</h3>
-                            <button class="button-eight">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 1000</h3>-->
+<!--                            <button class="button-two">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 1000</h3>-->
+<!--                            <button class="button-three">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 1000</h3>-->
+<!--                            <button class="button-four">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 1000</h3>-->
+<!--                            <button class="button-five">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 1000</h3>-->
+<!--                            <button class="button-six">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 1000</h3>-->
+<!--                            <button class="button-seven">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="item-container">-->
+<!--                    <div class="items">-->
+<!--                        <div class="for-image">-->
+<!--                            <div class="image">-->
+<!--                                <img src="" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="image-title">-->
+<!--                                <p>image-title</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="for-description">-->
+<!--                            <h3>Rs 1000</h3>-->
+<!--                            <button class="button-eight">Add to Cart</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </main>
     <footer>
         <div class="footer-logo">
-            <img class="footer-pic" src="../static/images/Kanpai_logo.png" alt="">
+            <img class="footer-pic" th:src="@{/images/Kanpai_logo.png}" alt="">
         </div>
         <nav class="footer-nav-a">
             <ul class="footer-ul-one">
