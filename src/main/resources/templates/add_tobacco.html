@@ -72,7 +72,7 @@
     <main class="main-container">
         <form th:method="post" th:action="@{/admin/save/product-tobacco}" th:object="${product_tobacco}" enctype="multipart/form-data">
             <div class="form-fields">
-                <input type="file" name="product-photo" id="product-photo" required th:field="*{product_photo}">
+                <input type="file" name="product_photo" accept="image/*" id="product_photo" class="form-control-file" required>
                 <input type="text" name="product-name" id="product-name" placeholder="Enter the product's name..." required th:field="*{product_name}">
                 <input type="text" name="product-quantity" id="product-quantity" placeholder="Enter the product's quantity..." required th:field="*{product_quantity}">
                 <input type="text" name="product-price" id="product-price" placeholder="Enter the product's price..." required th:field="*{product_price}">

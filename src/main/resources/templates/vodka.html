@@ -18,7 +18,7 @@
         <nav>
             <ul>
                 <li><a href="../template/kanpai_dashboard.html">Home</a></li>
-                <li><a href="../template/kanpai_dashboard.html#products-section">Products</a></li>
+                <li><a th:href="@{/landing#products-section}">Products</a></li>
                 <li><a href="">Contact us</a></li>
                 <li><a href="">About us</a></li>
                 <li><a href="../template/registration.html">Signup</a></li>
@@ -35,7 +35,7 @@
                     <div class="items" th:each="products:${product_vodka}">
                         <div class="for-image">
                             <div class="image">
-                                <img th:src="'data:image/png;base64,'+${products.imageBase64}">
+                                <img th:src="'data:image/png;base64,'+${products.imageBase64}" width="230" height="227"/>
                             </div>
                             <div class="image-title">
                                 <p th:text="${products.product_name}"></p>

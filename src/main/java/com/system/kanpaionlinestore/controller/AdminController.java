@@ -74,17 +74,17 @@ public class AdminController {
     }
 
     @PostMapping("/save/product-whiskey")
-    public String saveProductWhiskey(@Valid ProductWhiskeyPojo productWhiskeyPojo) {
+    public String saveProductWhiskey(@Valid ProductWhiskeyPojo productWhiskeyPojo) throws IOException {
         productWhiskeyService.save(productWhiskeyPojo);
         return "redirect:/add-whiskey";
     }
     @PostMapping("/save/product-vodka")
-    public String saveProductVodka(@Valid ProductVodkaPojo productVodkaPojo) {
+    public String saveProductVodka(@Valid ProductVodkaPojo productVodkaPojo) throws IOException {
         productVodkaService.save(productVodkaPojo);
         return "redirect:/product/vodka";
     }
     @PostMapping("/save/product-wine")
-    public String saveProductWine(@Valid ProductWinePojo productWinePojo) {
+    public String saveProductWine(@Valid ProductWinePojo productWinePojo) throws IOException {
         productWineService.save(productWinePojo);
         return "redirect:/product/wine";
     }
@@ -94,12 +94,12 @@ public class AdminController {
         return "add_gin";
     }
     @PostMapping("/save/product-tequila")
-    public String saveProductTequila(@Valid ProductTequilaPojo productTequilaPojo) {
+    public String saveProductTequila(@Valid ProductTequilaPojo productTequilaPojo) throws IOException {
         productTequilaService.save(productTequilaPojo);
         return "redirect:/product/tequila";
     }
     @PostMapping("/save/product-tobacco")
-    public String saveProductTobacco(@Valid ProductTobaccoPojo productTobaccoPojo) {
+    public String saveProductTobacco(@Valid ProductTobaccoPojo productTobaccoPojo) throws IOException{
         productTobaccoService.save(productTobaccoPojo);
         return "redirect:/product/tobacco";
     }

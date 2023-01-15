@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -26,7 +26,7 @@
   <aside id="sidebar">
 
     <div class="sidebar-title">
-      <img th:src="@{/images/man.png}" height="40px" width="40px" alt="">
+      <img th:src="@{/images/man.png}" height="40px" width="40px">
       <h4 class="profile-text">Profile</h4>
       <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
     </div>
@@ -72,10 +72,10 @@
   <main class="main-container">
     <form th:method="post" th:action="@{/admin/save/product-gin}" th:object="${product_gin}" enctype="multipart/form-data">
       <div class="form-fields">
-        <input type="file" name="product_photo" id="product_photo" required th:field="*{product_photo}">
-        <input type="text" name="product_name" id="product_name" placeholder="Enter the product's name..." required th:field="*{product_name}">
-        <input type="text" name="product-quantity" id="product-quantity" placeholder="Enter the product's quantity..." required th:field="*{product_quantity}">
-        <input type="text" name="product-price" id="product-price" placeholder="Enter the product's price..." required th:field="*{product_price}">
+        <input type="file" name="product_photo" accept="image/*" id="product_photo" class="form-control-file" required>
+        <input type="text" name="product_name" id="product_name" placeholder="Enter the product's name..." required th:field="*{product_name}" >
+        <input type="text" name="product_quantity" id="product_quantity" placeholder="Enter the product's quantity..." required th:field="*{product_quantity}">
+        <input type="text" name="product_price" id="product_price" placeholder="Enter the product's price..." required th:field="*{product_price}">
         <button type="submit">Add product</button>
       </div>
     </form>

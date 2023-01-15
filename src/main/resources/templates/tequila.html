@@ -35,7 +35,7 @@
                     <div class="items" th:each="products:${product_tequila}">
                         <div class="for-image">
                             <div class="image">
-                                <img th:src="'data:image/png;base64,'+${products.imageBase64}">
+                                <img th:src="'data:image/png;base64,'+${products.imageBase64}" width="230" height="227"/>
                             </div>
                             <div class="image-title">
                                 <p th:text="${products.product_name}"></p>
