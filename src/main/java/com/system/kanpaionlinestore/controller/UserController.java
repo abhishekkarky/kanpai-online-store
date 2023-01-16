@@ -51,39 +51,106 @@ public class UserController {
     @GetMapping("/whiskey")
     public String getWhiskeyPage(Model model) {
         List<ProductWhiskey> productWhiskeys = productWhiskeyService.fetchAll();
-        model.addAttribute("product_whiskey", productWhiskeys);
+        model.addAttribute("product_whiskey", productWhiskeys.stream().map(productWhiskey ->
+                ProductWhiskey.builder()
+                        .id(productWhiskey.getId())
+                        .imageBase64(getImageBase64(productWhiskey.getProduct_photo()))
+                        .product_name(productWhiskey.getProduct_name())
+                        .product_quantity(productWhiskey.getProduct_quantity())
+                        .product_price(productWhiskey.getProduct_price())
+                        .build()
+                )
+        );
         return ("whiskey");
     }
 
     @GetMapping("/vodka")
     public String getVodkaPage(Model model) {
         List<ProductVodka> productVodkas = productVodkaService.fetchAll();
-        model.addAttribute("product_vodka", productVodkas);
+        model.addAttribute("product_vodka", productVodkas.stream().map(productVodka ->
+                ProductVodka.builder()
+                        .id(productVodka.getId())
+                        .imageBase64(getImageBase64(productVodka.getProduct_photo()))
+                        .product_name(productVodka.getProduct_name())
+                        .product_quantity(productVodka.getProduct_quantity())
+                        .product_price(productVodka.getProduct_price())
+                        .build()
+                )
+        );
         return ("vodka");
     }
     @GetMapping("/wine")
     public String getWinePage(Model model) {
         List<ProductWine> productWines = productWineService.fetchAll();
-        model.addAttribute("product_wine", productWines);
+        model.addAttribute("product_wine", productWines.stream().map(productWine ->
+                    ProductWine.builder()
+                            .id(productWine.getId())
+                            .imageBase64(getImageBase64(productWine.getProduct_photo()))
+                            .product_name(productWine.getProduct_name())
+                            .product_quantity(productWine.getProduct_quantity())
+                            .product_price(productWine.getProduct_price())
+                            .build()
+                    )
+        );
         return ("wine");
     }
     @GetMapping("/gin")
     public String getGinPage(Model model) {
         List<ProductGin> productGins = productGinService.fetchAll();
-        model.addAttribute("product_gin", productGins);
+        model.addAttribute("product_gin", productGins.stream().map(productGin ->
+                ProductGin.builder()
+                        .id(productGin.getId())
+                        .imageBase64(getImageBase64(productGin.getProduct_photo()))
+                        .product_name(productGin.getProduct_name())
+                        .product_quantity(productGin.getProduct_quantity())
+                        .product_price(productGin.getProduct_price())
+                        .build()
+                )
+        );
         return ("gin");
     }
     @GetMapping("/tequila")
     public String getTequilaPage(Model model) {
         List<ProductTequila> productTequilas = productTequilaService.fetchAll();
-        model.addAttribute("product_tequila", productTequilas);
+        model.addAttribute("product_tequila", productTequilas.stream().map(productTequila ->
+                ProductTequila.builder()
+                        .id(productTequila.getId())
+                        .imageBase64(getImageBase64(productTequila.getProduct_photo()))
+                        .product_name(productTequila.getProduct_name())
+                        .product_quantity(productTequila.getProduct_quantity())
+                        .product_price(productTequila.getProduct_price())
+                        .build()
+                )
+        );
         return ("tequila");
     }
     @GetMapping("/tobacco")
     public String getTobaccoPage(Model model) {
         List<ProductTobacco> productTobaccos = productTobaccoService.fetchAll();
-        model.addAttribute("product_tobacco", productTobaccos);
+        model.addAttribute("product_tobacco", productTobaccos.stream().map(productTobacco ->
+                ProductTobacco.builder()
+                        .id(productTobacco.getId())
+                        .imageBase64(getImageBase64(productTobacco.getProduct_photo()))
+                        .product_name(productTobacco.getProduct_name())
+                        .product_quantity(productTobacco.getProduct_quantity())
+                        .product_price(productTobacco.getProduct_price())
+                        .build()
+                )
+        );
         return ("tobacco");
+    }
+    public String getImageBase64(String fileName) {
+        String filePath = System.getProperty("user.dir") + "/kanpai_store/";
+        File file = new File(filePath + fileName);
+        byte[] bytes = new byte[0];
+        try {
+            bytes = Files.readAllBytes(file.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        String base64 = Base64.getEncoder().encodeToString(bytes);
+        return base64;
     }
 
     @GetMapping("/cart")
