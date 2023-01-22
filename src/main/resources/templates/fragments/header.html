@@ -1,0 +1,26 @@
+<header>
+    <div class="logo">
+         <img class="head-img" th:src="@{~/images/Kanpai_logo.png}" alt="">
+    </div>
+    <div class="content-right">
+        <div class="top-section">
+            <form>
+                <input type="text" name="search" id="search" placeholder="Search the products...">
+                <button class="for-search" type="submit"><img class="search" th:src="@{/images/search.png}" alt=""></button>
+            </form>
+            <div class="for-cart">
+                <button class="cart" type="submit"><img class="cart-img" th:src="@{/images/cart.png}" alt=""></button>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a th:href="@{/landing}">Home</a></li>
+                <li><a href="#products-section">Products</a></li>
+                <li><a href="">Contact us</a></li>
+                <li><a href="">About us</a></li>
+                <li><a th:href="@{/user/create}">Signup</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</header>
