@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,23 +7,11 @@
     <title>Login</title>
     <link rel="icon" sizes="200x200" th:href="@{/images/kanpai-logo-icon.png}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img class="head-img" th:src="@{~/images/Kanpai_logo.png}" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li><a th:href="@{/landing}">Home</a></li>
-                <li><a th:href="@{/landing#products-section}">Products</a></li>
-                <li><a href="">Contact us</a></li>
-                <li><a href="">About us</a></li>
-                <li><a th:href="@{/user/create}">Signup</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header th:replace="/fragments/header.html"></header>
     <main>
         <div class="main-container">
             <div class="container-left">

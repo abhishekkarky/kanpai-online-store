@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +7,13 @@
     <title>Whiskey</title>
     <link rel="icon" sizes="200x200" href="../static/images/kanpai-logo-icon.png">
     <link rel="stylesheet" type="text/css" th:href="@{/css/product_tobacco.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <script src="" defer></script>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img class="head-img" th:src="@{/images/Kanpai_logo.png}" alt="">
-        </div>
-        <nav>
-            <ul>
-                <li><a th:href="@{/landing}">Home</a></li>
-                <li><a th:href="@{/landing#products-section}">Products</a></li>
-                <li><a href="">Contact us</a></li>
-                <li><a href="">About us</a></li>
-                <li><a th:href="@{/user/create}">Signup</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header th:replace="/fragments/header.html"></header>
     <main>
         <div class="whiskey-container">
             <div class="heading-title">
@@ -162,30 +151,6 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="footer-logo">
-            <img class="footer-pic" th:src="@{/images/Kanpai_logo.png}" alt="">
-        </div>
-        <nav class="footer-nav-a">
-            <ul class="footer-ul-one">
-                <li><a class="footer-a" href="">My account</a></li>
-                <li><a class="footer-a" href="../template/cart_page.html">Cart</a></li>
-                <li><a class="footer-a" href="">Privacy Policy</a></li>
-                <li><a class="footer-a" href="">Shipping Policy</a></li>
-                <h5 class="h5-one">Caution</h5>
-            <h5 class="h5-two">Drinking alcoholic beverages and smoking causes harm to your health. Please Drink Responsibly.</h5>
-            </ul>
-        </nav>
-        <nav class="footer-nav-b">
-            <ul class="footer-ul-two">
-                <h3 class="h2-one">Connect with us :-</h3>
-                <li><a class="footer-b" href="">Facebook</a></li>
-                <li><a class="footer-b" href="">Instagram</a></li>
-                <li><a class="footer-b" href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRmVXBJrBFhRsTXzgzTkQSKKLzBJHGgfqMsNjScvHswBrFTGTnldxpKJvPHHctjBmdDlSsQ">Email-address</a></li>
-                <li><a class="footer-b" href="">Viber</a></li>
-                <li><a class="footer-b" href="">Whatsapp</a></li>
-            </ul>
-        </nav>
-    </footer>
+    <footer th:replace="/fragments/footer.html"></footer>
 </body>
 </html>
