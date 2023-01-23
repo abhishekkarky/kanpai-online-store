@@ -100,12 +100,12 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 35vh;
+    height: 40vh;
 }
 .image {
     display: flex;
     width: 100%;
-    height: 28vh;
+    height: 34vh;
     cursor: pointer;
 }
 .image-title {

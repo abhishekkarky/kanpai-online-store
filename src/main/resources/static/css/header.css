@@ -37,8 +37,6 @@ header {
     height: 5vh;
     width: 60px;
     background-color: none;
-    border-radius: 12px;
-    border: 1px solid black;
 }
 .cart {
     width: 100%;
@@ -67,14 +65,13 @@ form {
     border: 0;
     border-radius: 50%;
     width: 50px;
-    height: 36px;
+    height: 34px;
     background: whitesmoke;
     cursor: pointer;
 }
 input {
     height: 38px;
     width: 380px;
-    font-size: 13px;
     border-radius: 12px;
     font-size: 15px;
     border: 0;
