@@ -11,19 +11,22 @@ import lombok.*;
 @AllArgsConstructor
 public class UserPojo {
     private Integer id;
-    @NotEmpty(message = "First Name can't be empty")
-    private String FName;
-    @NotEmpty(message = "Last Name can't be empty")
-    private String LName;
+    @NotEmpty(message = "Name can't be empty")
+    private String name;
     @NotEmpty(message = "E-mail can't be empty")
     private String email;
+    @NotEmpty(message = "Number can't be empty")
+    private String number;
+    @NotEmpty(message = "Address can't be empty")
+    private String address;
     @NotEmpty(message = "Password can't be empty")
     private String password;
     public UserPojo(User user) {
         this.id = user.getId();
-        this.FName = user.getFName();
-        this.LName = user.getLName();
+        this.name = user.getName();
         this.email = user.getEmail();
+        this.number = user.getNumber();
+        this.address = user.getAddress();
         this.password = user.getPassword();
     }
 }

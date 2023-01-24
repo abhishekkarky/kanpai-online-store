@@ -19,12 +19,14 @@ public class User implements UserDetails {
     @SequenceGenerator(name = "kos_user_seq_gen", sequenceName = "kos_user_id_seq", allocationSize = 1)
     @GeneratedValue(generator = "kos_user_seq_gen", strategy = GenerationType.SEQUENCE)
     private Integer id;
-    @Column(name = "fName")
-    private String FName;
-    @Column(name = "lName")
-    private String LName;
+    @Column(name = "Full Name")
+    private String name;
     @Column(name = "email", nullable = false, unique = true)
     private String email;
+    @Column(name = "number", nullable = false, unique = true)
+    private String number;
+    @Column(name = "address", nullable = false)
+    private String address;
     @Column(name = "password", nullable = false)
     private String password;
     @Override

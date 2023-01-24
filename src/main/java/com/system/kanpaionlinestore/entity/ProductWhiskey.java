@@ -28,4 +28,6 @@ public class ProductWhiskey {
     private String product_price;
     @Transient
     private String imageBase64;
+
+
 }

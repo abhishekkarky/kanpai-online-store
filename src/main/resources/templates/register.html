@@ -37,10 +37,12 @@
                         </h2>
                     </div>
                     <div class="for-fields">
-                        <input class="input" type="text" id="f-name" name="FName" placeholder="First Name..." required th:field="*{FName}" th:value="${user.FName}">
-                        <input class="input" type="text" id="l-name" name="LName" placeholder="Last Name..." required th:field="*{LName}" th:value="${user.LName}">
+                        <input class="input" type="text" id="name" name="name" placeholder="Full Name..." required th:field="*{name}" th:value="${user.name}">
                         <input class="input" type="email" id="p-number" name="email" placeholder="Email-address..." required th:field="*{email}" th:value="${user.email}">
+                        <input class="input" type="number" id="number" name="number" placeholder="Mobile Number..." required th:field="*{number}" th:value="${user.number}">
+                        <input class="input" type="text" id="address" name="address" placeholder="Address..." required th:field="*{address}" th:value="${user.address}">
                         <input class="input" type="password" id="create-password" name="password" placeholder="Create a password..." required th:field="*{password}" th:value="${user.password}">
+                        <input class="input" type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password...">
                         <button class="signup-button" type="submit">Signup</button>
                     </div>
                     <div class="for-login">

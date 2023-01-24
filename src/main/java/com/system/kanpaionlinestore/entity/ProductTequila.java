@@ -28,4 +28,5 @@ public class ProductTequila {
     private String product_price;
     @Transient
     private String imageBase64;
+
 }

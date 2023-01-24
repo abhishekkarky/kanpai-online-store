@@ -5,4 +5,5 @@ import com.system.kanpaionlinestore.pojo.UserPojo;
 public interface UserService {
     String save(UserPojo userPojo);
     UserPojo findByEmail(String email);
+    void sendEmail();
 }

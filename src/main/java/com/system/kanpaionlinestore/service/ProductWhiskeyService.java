@@ -10,4 +10,5 @@ public interface ProductWhiskeyService {
     List<ProductWhiskey> fetchAll();
 
     String save(ProductWhiskeyPojo productWhiskeyPojo) throws IOException;
+
 }

@@ -28,5 +28,6 @@ public class ProductWine {
     private String product_price;
     @Transient
     private String imageBase64;
+
 }
 
