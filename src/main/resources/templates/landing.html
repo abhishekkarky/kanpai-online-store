@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,65 +14,66 @@
     <script src="" defer></script>
 </head>
 <body>
-    <header th:replace="/fragments/header.html"></header>
-
+    <header th:replace="~{/fragments/header.html}"></header>
     <main>
         <div class="main-img">
-            <img class="home-img" th:src="@{/images/homepage_img.jpg}" alt="">
+            <h2 style="font-size: 40px;">Welcome to Kanpai Store</h2>
+            <h3>Here we promise to deliver quality liquor.</h3>
         </div>
-        <h2 id="products-section" class="text-one">YOU MIGHT BE SEARCHING FOR THESE CATEGORIES</h2>
-        <div class="item-div">
-            <div class="item-one">
-                <div class="item-title">
-                    <h2>Whiskey</h2>
-                </div>
-                <div class="item-text">
-                    <a class="a-text" th:href="@{/user/whiskey}">View items</a>
-                </div>
-            </div>
-            <div class="item-two">
-                <div class="item-title">
-                    <h2>Vodka</h2>
-                </div>
-                <div class="item-text">
-                    <a class="a-text" th:href="@{/user/vodka}">View items</a>
+        <h2 class="title">Find all Products Here</h2>
+        <div id = products-section>
+            <div class="item" th:each="products:${product}">
+                <img class="item-pic" th:src="'data:image/png;base64,'+${products.imageBase64}"/>
+                <p th:text="${products.name}"></p>
+                <div class="info">
+                    <p th:text="${products.price}"></p>
+                    <button type="submit">Add to cart</button>
                 </div>
             </div>
-            <div class="item-three">
-                <div class="item-title">
-                    <h2>Wine</h2>
-                </div>
-                <div class="item-text">
-                    <a class="a-text" th:href="@{/user/wine}">View items</a>
-                </div>
-            </div>
-            <div class="item-four">
-                <div class="item-title">
-                    <h2>Gin</h2>
-                </div>
-                <div class="item-text">
-                    <a class="a-text" th:href="@{/user/gin}">View items</a>
-                </div>
-            </div>
-            <div class="item-five">
-                <div class="item-title">
-                    <h2>Tequila</h2>
-                </div>
-                <div class="item-text">
-                    <a class="a-text" th:href="@{/user/tequila}">View items</a>
-                </div>
-            </div>
-            <div class="item-six">
-                <div class="item-title">
-                    <h2>Tobacco</h2>
-                </div>
-                <div class="item-text">
-                    <a class="a-text" th:href="@{/user/tobacco}">View items</a>
-                </div>
-            </div>
+<!--            width="230" height="227"-->
+<!--            <div class="item">-->
+<!--                <img class="item-pic" src="Vodka.jpg" alt="">-->
+<!--                <p>Vodka</p>-->
+<!--                <div class="info">-->
+<!--                    <p>Rs 8000</p>-->
+<!--                    <button type="submit">Add to cart</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <img class="item-pic" src="Vodka.jpg" alt="">-->
+<!--                <p>Vodka</p>-->
+<!--                <div class="info">-->
+<!--                    <p>Rs 8000</p>-->
+<!--                    <button type="submit">Add to cart</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <img class="item-pic" src="Vodka.jpg" alt="">-->
+<!--                <p>Vodka</p>-->
+<!--                <div class="info">-->
+<!--                    <p>Rs 8000</p>-->
+<!--                    <button type="submit">Add to cart</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <img class="item-pic" src="Vodka.jpg" alt="">-->
+<!--                <p>Vodka</p>-->
+<!--                <div class="info">-->
+<!--                    <p>Rs 8000</p>-->
+<!--                    <button type="submit">Add to cart</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <img class="item-pic" src="Vodka.jpg" alt="">-->
+<!--                <p>Vodka</p>-->
+<!--                <div class="info">-->
+<!--                    <p>Rs 8000</p>-->
+<!--                    <button type="submit">Add to cart</button>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </main>
-
-    <footer th:replace="/fragments/footer.html"></footer>
+    <footer th:replace="~{/fragments/footer.html}"></footer>
 </body>
 </html>
+

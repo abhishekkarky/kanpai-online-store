@@ -15,109 +15,64 @@ html {
 /* For main */
 main {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    margin-top: .5%;
-    height: calc(270vh - 100px);
+    width: 1440px;
 }
 .main-img {
-    width: 95%;
-    height: 40%;
-}
-.home-img {
-    width: 100%;
-    height: 100%;
-}
-.text-one {
     display: flex;
-    margin-top: 2%;
-    font-weight: bolder;
-    color: #9A0D0D;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1440px;
+    height: 700px;
+    border: 1px solid green;
+    background-image: linear-gradient(to bottom, rgba(242, 192, 224, 0.52), rgb(243, 158, 60)), url(../images/head-img.jpg);
+    background-size: 100%;
+    color: rgb(84, 84, 84);
 }
-.item-div {
+.title {
+    margin-top: 40px;
+    color: red;
+}
+#products-section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     align-items: center;
-    height: 100%;
-    width: 90%;
-    margin-top: 2%;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 1350px;
+    /* border: 1px solid green; */
 }
-.item-one {
-    margin: 1%;
-    height: 40%;
-    width: 25%;
-    background-image: url("../images/Whiskey.jpg");
-    background-size: 100% 100%;
-    box-shadow: 20px 20px 10px grey;
-}
-.item-two {
-    margin: 1%;
-    height: 40%;
-    width: 25%;
-    background-image: url("../images/Vodka.jpg");
-    background-size: 100% 100%;
-    box-shadow: 20px 20px 10px grey;
-
-}
-.item-three {
-    margin: 1%;
-    height: 40%;
-    width: 25%;
-    background-image: url("../images/Wine.jpg");
-    background-size: 100% 100%;
-    box-shadow: 20px 20px 10px grey;
-
-}
-.item-four {
-    margin: 1%;
-    height: 40%;
-    width: 25%;
-    background-image: url("../images/Gin.jpg");
-    background-size: 100% 100%;
-    box-shadow: 20px 20px 10px grey;
-}
-.item-five {
-    margin: 1%;
-    height: 40%;
-    width: 25%;
-    background-image: url("../images/Tequila.jpg");
-    background-size: 100% 100%;
-    box-shadow: 20px 20px 10px grey;
-}
-.item-six {
-    margin: 1%;
-    height: 40%;
-    width: 25%;
-    background-image: url("../images/cigarette.jpg");
-    background-size: 100% 100%;
-    box-shadow: 20px 20px 10px grey;
-}
-.item-title {
+.item {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 8%;
-    text-transform: uppercase;
-    color: white;
-    justify-content: flex-end;
-    align-items: flex-end;
-    font-weight: 900;
+    align-items: center;
+    width: 230px;
+    height: 300px;
+    border: 1.5px solid black;
+    margin-top: 10px;
+    border-radius: 8px;
 }
-.item-text {
+.item-pic {
+    width: 225px;
+    height: 240px;
+}
+.info {
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 92%;
-    text-transform: uppercase;
-    justify-content: flex-end;
-    align-items: flex-end;
-    opacity: 0;
-    transition: opacity .40s ease;
+    width: 220px;
+    justify-content: space-between;
 }
-.item-text:hover {
-    opacity: 1;
-    background-color: none;
+button {
+    width: 80px;
+    height: 30px;
+}
+button:hover {
+    background-color: #f28e1c;
+    color: black;
+    cursor: pointer;
 }
 .a-text {
     font: 900;

@@ -16,10 +16,10 @@ import java.util.Collection;
 @Table(name = "kos_users")
 public class User implements UserDetails {
     @Id
-    @SequenceGenerator(name = "kos_user_seq_gen", sequenceName = "kos_user_id_seq", allocationSize = 1)
-    @GeneratedValue(generator = "kos_user_seq_gen", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "kos_users_seq_gen", sequenceName = "kos_users_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "kos_users_seq_gen", strategy = GenerationType.SEQUENCE)
     private Integer id;
-    @Column(name = "Full Name")
+    @Column(name = "Full_Name")
     private String name;
     @Column(name = "email", nullable = false, unique = true)
     private String email;
