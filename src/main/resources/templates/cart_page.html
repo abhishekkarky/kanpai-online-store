@@ -22,13 +22,13 @@
             </div>
             <!-- ----- -->
             <div class="item-main-area">
-                <div class="item-table">
+                <div class="item-table" th:each="productcarts:${productcart}">
                     <div class="item">
                         <div class="title">
                             <h4>Item</h4>
                         </div>
                         <div class="data">
-                            <h4>Jack Daniels</h4>
+                            <h4 th:text="${productcarts.name}"></h4>
                         </div>
                     </div>
 <!--                    <div class="volume">-->
@@ -47,7 +47,7 @@
                             <div class="quantity-button">
                                 <button id="substract" class="adub" >-</button>
                                 <div class="h4">
-                                    <h4>1</h4>
+                                    <h4 th:text="${productcarts.quantity}">1</h4>
                                 </div>
                                 <button id="add" class="adub" >+</button>
                             </div>
@@ -58,7 +58,7 @@
                             <h4>Price</h4>
                         </div>
                         <div class="data">
-                            <h4>4000</h4>
+                            <h4 th:text="${productcarts.price}"></h4>
                         </div>
                     </div>
                     <div class="amounts">
@@ -66,7 +66,7 @@
                             <h4>Amount</h4>
                         </div>
                         <div class="data">
-                            <h4>4000</h4>
+                            <h4 th:text="${productcarts.price}"></h4>
                         </div>
                     </div>
                     <div class="remove">

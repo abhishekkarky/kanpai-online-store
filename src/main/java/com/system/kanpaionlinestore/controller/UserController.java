@@ -3,6 +3,7 @@ package com.system.kanpaionlinestore.controller;
 import com.system.kanpaionlinestore.entity.*;
 import com.system.kanpaionlinestore.pojo.UserPojo;
 import com.system.kanpaionlinestore.service.*;
+import com.system.kanpaionlinestore.service.impl.ProductCartServices;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
     private final ProductService productService;
+    private final ProductCartServices productCartServices;
 
     @GetMapping("/create")
     public String createUser(Model model) {
@@ -40,7 +42,9 @@ public class UserController {
     }
 
     @GetMapping("/cart")
-    public String getCartPage() {
+    public String getCartPage(Model model) {
+        List<ProductCart> productCarts = productCartServices.fetchAll();
+        model.addAttribute("productcart",productCarts);
         return "cart_page";
     }
 
