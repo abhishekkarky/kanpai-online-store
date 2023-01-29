@@ -44,6 +44,10 @@ public class UserController {
     public String getPrivacyPolicyPage() {
         return ("/privacypolicy");
     }
+    @GetMapping("/shipping")
+    public String getShippingPolicyPage() {
+        return ("/shipping");
+    }
 
     @GetMapping("/sendEmail")
     public String sendRegistrationEmail() {
