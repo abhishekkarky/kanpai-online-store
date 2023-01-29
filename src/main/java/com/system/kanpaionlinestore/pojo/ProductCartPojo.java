@@ -12,13 +12,13 @@ import lombok.*;
 public class ProductCartPojo {
     private Integer id;
     private String name;
-    private String quantity;
-    private String price;
+    private Integer quantity;
+    private Integer price;
 
     public ProductCartPojo(ProductCart productCart) {
         this.id = productCart.getId();
         this.name = productCart.getName();
-        this.quantity = String.valueOf(productCart.getQuantity());
-        this.price = String.valueOf(productCart.getPrice());
+        this.quantity = productCart.getQuantity();
+        this.price = productCart.getPrice();
     }
 }

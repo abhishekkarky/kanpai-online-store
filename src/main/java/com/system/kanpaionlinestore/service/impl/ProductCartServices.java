@@ -1,6 +1,7 @@
 package com.system.kanpaionlinestore.service.impl;
 
 import com.system.kanpaionlinestore.entity.ProductCart;
+import com.system.kanpaionlinestore.pojo.ProductCartPojo;
 import com.system.kanpaionlinestore.repo.ProductCartRepo;
 import com.system.kanpaionlinestore.service.ProductCartService;
 import com.system.kanpaionlinestore.service.ProductService;
@@ -17,5 +18,18 @@ public class ProductCartServices implements ProductCartService {
     @Override
     public List<ProductCart> fetchAll() {
         return this.productCartRepo.findAll();
+    }
+
+    @Override
+    public String save(ProductCartPojo productCartPojo) {
+        ProductCart productCart = new ProductCart();
+        if(productCartPojo.getId()!=null){
+            productCart.setId(productCartPojo.getId());
+        }
+        productCart.setName(productCartPojo.getName());
+        productCart.setQuantity(productCartPojo.getQuantity());
+        productCart.setPrice(productCartPojo.getPrice());
+        productCartRepo.save(productCart);
+        return "saved";
     }
 }

@@ -1,6 +1,7 @@
 package com.system.kanpaionlinestore.controller;
 
 import com.system.kanpaionlinestore.entity.*;
+import com.system.kanpaionlinestore.pojo.ProductCartPojo;
 import com.system.kanpaionlinestore.pojo.UserPojo;
 import com.system.kanpaionlinestore.service.*;
 import com.system.kanpaionlinestore.service.impl.ProductCartServices;
@@ -35,6 +36,15 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/aboutus")
+    public String getAboutUsPage() {
+        return "/aboutus";
+    }
+    @GetMapping("/privacypolicy")
+    public String getPrivacyPolicyPage() {
+        return ("/privacypolicy");
+    }
+
     @GetMapping("/sendEmail")
     public String sendRegistrationEmail() {
         this.userService.sendEmail();
@@ -43,9 +53,13 @@ public class UserController {
 
     @GetMapping("/cart")
     public String getCartPage(Model model) {
-        List<ProductCart> productCarts = productCartServices.fetchAll();
-        model.addAttribute("productcart",productCarts);
+        model.addAttribute("productcart", new ProductCartPojo());
         return "cart_page";
+    }
+    @PostMapping("/saveCart")
+    public String saveProductCart(@Valid ProductCartPojo productCartPojo) {
+        productCartServices.save(productCartPojo);
+        return "redirect:/user/cart";
     }
 
 }
