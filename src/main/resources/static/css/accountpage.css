@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    flex-wrap: wrap;
+    font-family: 'Poppins', sans-serif;
+    background-color: #D2D2D2;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+    justify-content: center;
+    align-items: center;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    border: 2px solid whitesmoke;
+    box-shadow: 5px 5px 5px grey;
+}
+.main-title {
+    font-size: 35px;
+    color: #f28e1c;
+    text-decoration: underline;
+}
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    margin-top: 15px;
+}
+.main-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile {
+    width: 150px;
+    height: 150px;
+}
+.profile {
+    border-radius: 50%;
+    border: 1px solid black;
+}
+.fields {
+    display: flex;
+    flex-direction: column;
+    width: 385px;
+    margin-top: 15px;
+}
+.inputs {
+    height: 42px;
+    width: 380px;
+    border-radius: 12px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    height: 45px;
+    width: 300px;
+    margin-top: 10px;
+}
+.update, .reset, .logout {
+    width: 90px;
+    font-size: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #f28e1c;
+}
+.update:hover {
+    background-color: green;
+    color: white;
+}
+.reset:hover {
+    color: white;
+}
+.logout:hover {
+    background-color: red;
+    color: white;
+}
+.for-profile-picbutton {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 400px;
+}

@@ -66,4 +66,9 @@ public class UserController {
         return "redirect:/user/cart";
     }
 
+    @GetMapping("/account")
+    public String getAccountPage() {
+        return "accountpage";
+    }
+
 }

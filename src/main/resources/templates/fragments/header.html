@@ -1,11 +1,11 @@
 <header>
     <div class="logo">
-         <img class="head-img" th:src="@{~/images/Kanpai_logo.png}" alt="">
+        <img class="head-img" th:src="@{~/images/Kanpai_logo.png}" alt="">
     </div>
     <div class="content-right">
         <div class="top-section">
-            <form>
-                <input type="text" name="search" id="search" placeholder="Search the products...">
+            <form class="search-form">
+                <input class="search-input" type="text" name="search" id="search" placeholder="Search the products...">
                 <button class="for-search" type="submit"><img class="search" th:src="@{/images/search.png}" alt=""></button>
             </form>
             <div class="for-cart">
@@ -22,5 +22,4 @@
             </ul>
         </nav>
     </div>
-
 </header>

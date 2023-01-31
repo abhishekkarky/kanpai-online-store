@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanpai</title>
+  <link rel="icon" sizes="200x200" th:href="@{/images/kanpai-logo-icon.png}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/accountpage.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <script src="" defer></script>
+</head>
+<body>
+  <header th:replace="~{/fragments/header.html}"></header>
+  <main>
+    <h1 class="main-title">Account Settings</h1>
+    <div class="main-container">
+      <form class="main-form">
+        <div class="profile-section">
+          <div class="for-profile-picbutton">
+            <img class="profile" src="profile">
+            <input class="inputfile" type="file" name="pic" accept="image/*">
+          </div>
+          <h4>Account Name</h4>
+        </div>
+        <div class="fields">
+          <label for="name">Full Name</label>
+          <input class="inputs" type="text" name="fullname" placeholder="Full Name...">
+          <label for="email">Email address</label>
+          <input class="inputs"  type="email" name="email" placeholder="Email address...">
+          <label for="number">Mobile Number</label>
+          <input class="inputs"  type="number" name="number" placeholder="Mobile Number...">
+          <label for="Address">Address</label>
+          <input class="inputs"  type="text" name="address" placeholder="Address...">
+          <label for="password">Password</label>
+          <input class="inputs"  type="password" name="password" placeholder="New password...">
+        </div>
+        <div class="buttons">
+          <button class="update" type="submit">update</button>
+          <button class="reset" type="reset">reset</button>
+          <button class="logout" type="submit">logout</button>
+        </div>
+      </form>
+    </div>
+  </main>
+  <footer th:replace="~{/fragments/footer.html}"></footer>
+</body>
+</html>
+
