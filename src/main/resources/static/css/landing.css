@@ -27,7 +27,6 @@ main {
     align-items: center;
     width: 1440px;
     height: 700px;
-    border: 1px solid green;
     background-image: linear-gradient(to bottom, rgba(242, 192, 224, 0.52), rgb(243, 158, 60)), url(../images/head-img.jpg);
     background-size: 100%;
     color: rgb(84, 84, 84);
