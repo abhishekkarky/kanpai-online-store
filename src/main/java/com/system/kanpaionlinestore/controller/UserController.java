@@ -25,7 +25,6 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
-    private final ProductService productService;
     private final ProductCartServices productCartServices;
 
     @GetMapping("/create")
@@ -61,7 +60,10 @@ public class UserController {
 
     @GetMapping("/cart")
     public String getCartPage(Model model) {
-//        model.addAttribute("productcart", new ProductCartPojo());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return "login";
+        }
         List<ProductCart> productCarts = productCartServices.fetchAll();
         model.addAttribute("productCart", productCarts.stream().map(productCart ->
                         ProductCart.builder()

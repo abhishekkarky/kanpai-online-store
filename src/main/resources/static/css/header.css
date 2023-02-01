@@ -61,6 +61,11 @@ header {
     width: 17px;
     height: 15px;
 }
+.for-search:hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: transparent;
+}
 .for-search {
     border: 0;
     border-radius: 50%;
