@@ -6,4 +6,5 @@ public interface UserService {
     String save(UserPojo userPojo);
     UserPojo findByEmail(String email);
     void sendEmail();
+    String update(UserPojo userPojo);
 }

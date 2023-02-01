@@ -22,14 +22,17 @@
         </div>
         <h2 class="title">Find all Products Here</h2>
         <div id = products-section>
-            <div class="item" th:each="products:${product}">
-                <img class="item-pic" th:src="'data:image/png;base64,'+${products.imageBase64}"/>
-                <p th:text="${products.name}"></p>
-                <div class="info">
-                    <p th:text="${products.price}"></p>
-                    <button type="submit">Add to cart</button>
+            <form th:method="post" th:action="@{/user/saveCart}" th:object="${productCart}">
+                <div class="item" th:each="products:${product}">
+                    <img class="item-pic" th:src="'data:image/png;base64,'+${products.imageBase64}"/>
+                    <p th:text="${products.name}"></p>
+                    <div class="info">
+                        <p th:text="${products.price}"></p>
+                        <button type="submit">Add to cart</button>
+                    </div>
                 </div>
-            </div>
+            </form>
+
 <!--            width="230" height="227"-->
 <!--            <div class="item">-->
 <!--                <img class="item-pic" src="Vodka.jpg" alt="">-->

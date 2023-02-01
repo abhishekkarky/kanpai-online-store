@@ -79,4 +79,18 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public String update(UserPojo userPojo) {
+        User user = new User();
+        if(userPojo.getId()!=null){
+            user.setId(userPojo.getId());
+        }
+        user.setName(userPojo.getName());
+        user.setEmail(userPojo.getEmail());
+        user.setNumber(userPojo.getNumber());
+        user.setAddress(userPojo.getAddress());
+        userRepo.save(user);
+        return "created";
+    }
 }

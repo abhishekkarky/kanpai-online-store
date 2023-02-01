@@ -1,8 +1,11 @@
 package com.system.kanpaionlinestore.pojo;
 
+import com.system.kanpaionlinestore.entity.Product;
 import com.system.kanpaionlinestore.entity.ProductCart;
 import com.system.kanpaionlinestore.service.ProductService;
 import lombok.*;
+
+import java.util.List;
 
 @Builder
 @Getter

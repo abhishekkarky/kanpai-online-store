@@ -18,30 +18,30 @@
   <main>
     <h1 class="main-title">Account Settings</h1>
     <div class="main-container">
-      <form class="main-form">
+      <form class="main-form" th:method="post" th:action="@{/user/updateUser}" th:object="${update}">
         <div class="profile-section">
           <div class="for-profile-picbutton">
             <img class="profile" src="profile">
             <input class="inputfile" type="file" name="pic" accept="image/*">
           </div>
-          <h4>Account Name</h4>
+          <h4 th:value="${info.getName()}"></h4>
         </div>
         <div class="fields">
           <label for="name">Full Name</label>
-          <input class="inputs" type="text" name="fullname" placeholder="Full Name...">
+          <input class="inputs" type="text" name="name" placeholder="Full Name..." th:value="${info.getName()}">
           <label for="email">Email address</label>
-          <input class="inputs"  type="email" name="email" placeholder="Email address...">
+          <input class="inputs"  type="email" name="email" placeholder="Email address..." th:value="${info.getEmail()}">
           <label for="number">Mobile Number</label>
-          <input class="inputs"  type="number" name="number" placeholder="Mobile Number...">
+          <input class="inputs"  type="number" name="number" placeholder="Mobile Number..." th:value="${info.getNumber()}">
           <label for="Address">Address</label>
-          <input class="inputs"  type="text" name="address" placeholder="Address...">
+          <input class="inputs"  type="text" name="address" placeholder="Address..." th:value="${info.getAddress()}">
           <label for="password">Password</label>
           <input class="inputs"  type="password" name="password" placeholder="New password...">
         </div>
         <div class="buttons">
           <button class="update" type="submit">update</button>
           <button class="reset" type="reset">reset</button>
-          <button class="logout" type="submit">logout</button>
+          <button class="logout" th:href="@{/logout}" type="submit">logout</button>
         </div>
       </form>
     </div>
