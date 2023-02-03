@@ -97,4 +97,9 @@ public class UserController {
         return "redirect:/user/profile";
     }
 
+    @GetMapping("/contact")
+    public String getContactUsPage() {
+        return "contactus";
+    }
+
 }
