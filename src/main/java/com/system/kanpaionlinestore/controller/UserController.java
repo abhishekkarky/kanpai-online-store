@@ -93,7 +93,7 @@ public class UserController {
     }
     @PostMapping("/updateUser")
     public String updateUser(@Valid UserPojo userpojo) {
-        userService.update(userpojo);
+        userService.save(userpojo);
         return "redirect:/user/profile";
     }
 

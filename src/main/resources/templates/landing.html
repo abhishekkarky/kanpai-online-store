@@ -22,7 +22,7 @@
         </div>
         <h2 class="title">Find all Products Here</h2>
         <div id = products-section>
-            <form th:method="post" th:action="@{/user/saveCart}" th:object="${productCart}">
+            <form class="form-item" th:method="post" th:action="@{/user/saveCart}" th:object="${productCart}">
                 <div class="item" th:each="products:${product}">
                     <img class="item-pic" th:src="'data:image/png;base64,'+${products.imageBase64}"/>
                     <p th:text="${products.name}"></p>
