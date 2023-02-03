@@ -38,6 +38,9 @@ header {
     width: 60px;
     background-color: none;
 }
+.a-header {
+    margin-top: 6px;
+}
 .cart {
     width: 100%;
     cursor: pointer;
