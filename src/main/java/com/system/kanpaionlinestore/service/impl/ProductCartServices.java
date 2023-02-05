@@ -4,7 +4,6 @@ import com.system.kanpaionlinestore.entity.ProductCart;
 import com.system.kanpaionlinestore.pojo.ProductCartPojo;
 import com.system.kanpaionlinestore.repo.ProductCartRepo;
 import com.system.kanpaionlinestore.service.ProductCartService;
-import com.system.kanpaionlinestore.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,4 +31,16 @@ public class ProductCartServices implements ProductCartService {
         productCartRepo.save(productCart);
         return "saved";
     }
+
+//    @Override
+//    public String saveToCart(Integer id, Principal principal) {
+//        ProductCart productCart = new ProductCart();
+//
+//        productCart.setProduct(productCartRepo.findById(id).orElseThrow().getProduct());
+//        productCart.setName(productCart.getName());
+//        productCart.setQuantity(1);
+//        productCart.setPrice(productCart.getPrice());
+//        ProductCartRepo.save(productCart);
+//        return "Saved";
+//    }
 }

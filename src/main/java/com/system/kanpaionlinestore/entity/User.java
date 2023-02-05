@@ -14,7 +14,7 @@ import java.util.Collection;
 @AllArgsConstructor
 @Entity
 @Table(name = "kos_users")
-public class User implements UserDetails {
+public class User implements UserDetails, UserInterface {
     @Id
     @SequenceGenerator(name = "kos_users_seq_gen", sequenceName = "kos_users_id_seq", allocationSize = 1)
     @GeneratedValue(generator = "kos_users_seq_gen", strategy = GenerationType.SEQUENCE)
@@ -29,6 +29,8 @@ public class User implements UserDetails {
     private String address;
     @Column(name = "password", nullable = false)
     private String password;
+    @Column(name = "OTP")
+    private String OTP;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -37,6 +39,10 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return this.email;
+    }
+    @Override
+    public String getOTP() {
+        return this.OTP;
     }
     @Override
     public boolean isAccountNonExpired() {
@@ -57,4 +63,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

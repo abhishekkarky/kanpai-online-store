@@ -64,11 +64,11 @@ main {
     width: 220px;
     justify-content: space-between;
 }
-button {
+.button-cart {
     width: 80px;
     height: 30px;
 }
-button:hover {
+.button-cart:hover {
     background-color: #f28e1c;
     color: black;
     cursor: pointer;

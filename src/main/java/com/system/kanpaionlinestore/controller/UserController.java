@@ -13,11 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.security.Principal;
-import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -58,7 +54,13 @@ public class UserController {
         return "emailsuccess";
     }
 
-    @GetMapping("/cart")
+//    @GetMapping("")
+//    public String saveToCart(@PathVariable Integer id){
+//        productCartServices.saveToCart(id);
+//        return "cart_page";
+//    }
+
+    @GetMapping("/cart/{id}")
     public String getCartPage(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
@@ -100,6 +102,34 @@ public class UserController {
     @GetMapping("/contact")
     public String getContactUsPage() {
         return "contactus";
+    }
+
+    @GetMapping("/request-password-reset")
+    public String requestPasswordReset() {
+        return "request_password_reset";
+    }
+
+    @PostMapping("/request-password-reset")
+    public String processPasswordResetRequest(@RequestParam("email") String email, Model model) {
+        userService.processPasswordResetRequest(email);
+        model.addAttribute("message", "A password reset OTP has been sent to your email. Please check your inbox!!!");
+        return "reset_password";
+    }
+
+    @GetMapping("/reset-password")
+    public String resetPassword(@RequestParam("email") String email, Model model) {
+        model.addAttribute("email", email);
+        return "reset_password";
+    }
+
+    @PostMapping("/reset-password")
+    public String processPasswordReset(@RequestParam("email") String email,
+                                       @RequestParam(required=false, name = "OTP") String OTP,
+                                       @RequestParam("password") String password,
+                                       Model model) {
+        userService.resetPassword(email, OTP, password);
+        model.addAttribute("message", "Your password has been reset successfully.");
+        return "reset_password";
     }
 
 }

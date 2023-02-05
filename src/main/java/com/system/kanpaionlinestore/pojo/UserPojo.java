@@ -21,6 +21,7 @@ public class UserPojo {
     private String address;
     @NotEmpty(message = "Password can't be empty")
     private String password;
+    private String OTP;
     public UserPojo(User user) {
         this.id = user.getId();
         this.name = user.getName();
@@ -28,5 +29,6 @@ public class UserPojo {
         this.number = user.getNumber();
         this.address = user.getAddress();
         this.password = user.getPassword();
+        this.OTP = user.getOTP();
     }
 }
