@@ -53,9 +53,9 @@
 
   <!-- Main -->
   <main class="main-container">
-    <form>
-      <input class="title" type="text" name="notification-title" id="title" placeholder="Enter the notification title...">
-      <textarea class="description" name="notification-description" id="description" placeholder="Enter the notification description..."></textarea>
+    <form th:method="post" th:action="@{/admin/save/notices}" th:object="${notice}">
+      <input class="title" type="text" name="topic" id="topic" placeholder="Enter the notification topic..." required th:field="*{topic}">
+      <textarea class="description" name="description" id="description" placeholder="Enter the notification description..." required th:field="*{description}"></textarea>
       <button type="submit">Send notifications</button>
     </form>
   </main>

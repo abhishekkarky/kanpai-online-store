@@ -13,7 +13,8 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "kos_users")
+@Table(name = "kos_users", uniqueConstraints = {
+        @UniqueConstraint(name = "kos_users_email", columnNames = "email")})
 public class User implements UserDetails, UserInterface {
     @Id
     @SequenceGenerator(name = "kos_users_seq_gen", sequenceName = "kos_users_id_seq", allocationSize = 1)
@@ -21,9 +22,9 @@ public class User implements UserDetails, UserInterface {
     private Integer id;
     @Column(name = "Full_Name")
     private String name;
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "number", nullable = false, unique = true)
+    @Column(name = "number", nullable = false)
     private String number;
     @Column(name = "address", nullable = false)
     private String address;

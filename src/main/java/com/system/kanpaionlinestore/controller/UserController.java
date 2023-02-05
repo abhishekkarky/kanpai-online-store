@@ -22,6 +22,7 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
     private final ProductCartServices productCartServices;
+    private final NotificationsService notificationsService;
 
     @GetMapping("/create")
     public String createUser(Model model) {
@@ -95,7 +96,7 @@ public class UserController {
     }
     @PostMapping("/updateUser")
     public String updateUser(@Valid UserPojo userpojo) {
-        userService.save(userpojo);
+        userService.update(userpojo);
         return "redirect:/user/profile";
     }
 
@@ -130,6 +131,20 @@ public class UserController {
         userService.resetPassword(email, OTP, password);
         model.addAttribute("message", "Your password has been reset successfully.");
         return "reset_password";
+    }
+
+    @GetMapping("/notifications")
+    public String getNotifications(Model model) {
+        List<Notifications> notifications = notificationsService.fetchAll();
+        model.addAttribute("notice", notifications.stream().map(notice ->
+                        Notifications.builder()
+                                .id(notice.getId())
+                                .topic(notice.getTopic())
+                                .description(notice.getDescription())
+                                .build()
+                )
+        );
+        return ("notices");
     }
 
 }

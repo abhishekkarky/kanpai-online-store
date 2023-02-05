@@ -1,5 +1,4 @@
 package com.system.kanpaionlinestore.controller;
-
 import com.system.kanpaionlinestore.pojo.*;
 import com.system.kanpaionlinestore.service.*;
 import jakarta.validation.Valid;
@@ -17,6 +16,7 @@ import java.io.IOException;
 @RequestMapping("/admin")
 public class AdminController {
     private final ProductService productService;
+    private final NotificationsService notificationsService;
     @GetMapping("/dashboard")
     public String getAdminPage() {
         return "admin_dashboard";
@@ -32,14 +32,19 @@ public class AdminController {
         productService.save(productPojo);
         return "redirect:/landing";
     }
+    @GetMapping("/add-notices")
+    public String addNotices(Model model) {
+        model.addAttribute("notice", new NotificationsPojo());
+        return "notify_customers";
+    }
+    @PostMapping("/save/notices")
+    public String saveNotices(@Valid NotificationsPojo notificationsPojo){
+        notificationsService.save(notificationsPojo);
+        return "redirect:/user/notifications";
+    }
     @GetMapping("/order-list")
     public String getOrderListPage() {
         return "order_list";
-    }
-
-    @GetMapping("/notify")
-    public String getNotifyCustomersPage() {
-        return "notify_customers";
     }
 
     @GetMapping("/settings")
