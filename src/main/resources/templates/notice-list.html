@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Admin Dashboard</title>
+  <title>Notice List</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" th:href="@{/css/notify_customers.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/notice-list.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/css/admin_dashboard.css}">
 
 </head>
@@ -19,7 +19,7 @@
       <span class="material-icons-outlined">menu</span>
     </div>
     <div class="main-title">
-      <h2>Notify Customers</h2>
+      <h2>Notice List</h2>
     </div>
 
   </header>
@@ -56,11 +56,28 @@
 
   <!-- Main -->
   <main class="main-container">
-    <form th:method="post" th:action="@{/admin/save/notices}" th:object="${notice}">
-      <input class="title" type="text" name="topic" id="topic" placeholder="Enter the notification topic..." required th:field="*{topic}" th:value="${notice.topic}">
-      <textarea class="description" name="description" id="description" placeholder="Enter the notification description..." required th:field="*{description}" th:value="${notice.description}"></textarea>
-      <button type="submit">Send notifications</button>
-    </form>
+    <div class="order-table">
+      <form>
+        <table class="content-table">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Topic</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="notices:${notice}">
+            <td th:text="${notices.id}"></td>
+            <td th:text="${notices.topic}"></td>
+            <td th:text="${notices.description}"></td>
+            <td><a class="edit_button" th:href="@{~/admin/edit/}+${notices.id}">Edit</a><a class="delete_button" th:href="@{~/admin/delete/}+${notices.id}">Delete</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
   </main>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>

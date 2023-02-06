@@ -19,4 +19,6 @@ public class Notifications {
     private String topic;
     @Column(name = "description")
     private String description;
+
+
 }

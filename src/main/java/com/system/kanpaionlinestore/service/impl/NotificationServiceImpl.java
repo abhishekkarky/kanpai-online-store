@@ -1,14 +1,16 @@
 package com.system.kanpaionlinestore.service.impl;
 
 import com.system.kanpaionlinestore.entity.Notifications;
-import com.system.kanpaionlinestore.entity.Product;
+import com.system.kanpaionlinestore.entity.User;
+import com.system.kanpaionlinestore.exception.AppException;
 import com.system.kanpaionlinestore.pojo.NotificationsPojo;
+import com.system.kanpaionlinestore.pojo.UserPojo;
 import com.system.kanpaionlinestore.repo.NotificationsRepo;
 import com.system.kanpaionlinestore.service.NotificationsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -31,5 +33,14 @@ public class NotificationServiceImpl implements NotificationsService {
     @Override
     public List<Notifications> fetchAll() {
         return this.notificationsRepo.findAll();
+    }
+    @Override
+    public Notifications fetchById(Integer id) {
+        return notificationsRepo.findById(id).orElseThrow(()->new RuntimeException("not found"));
+
+    }
+    @Override
+    public void deleteById(Integer id) {
+        notificationsRepo.deleteById(id);
     }
 }
