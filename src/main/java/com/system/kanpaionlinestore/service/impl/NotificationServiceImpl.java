@@ -43,4 +43,5 @@ public class NotificationServiceImpl implements NotificationsService {
     public void deleteById(Integer id) {
         notificationsRepo.deleteById(id);
     }
+
 }

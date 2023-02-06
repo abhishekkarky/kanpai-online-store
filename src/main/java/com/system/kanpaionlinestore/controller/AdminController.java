@@ -59,8 +59,8 @@ public class AdminController {
     @GetMapping("/edit/{id}")
     public String editNotices(@PathVariable("id") Integer id, Model model) {
         Notifications notifications = notificationsService.fetchById(id);
-        model.addAttribute("notices", new NotificationsPojo(notifications));
-        return "redirect:/admin/add-notices";
+        model.addAttribute("notice", new NotificationsPojo(notifications));
+        return "notify_customers";
     }
     @GetMapping("/delete/{id}")
     public String deleteNotices(@PathVariable("id") Integer id) {
