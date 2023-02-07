@@ -8,6 +8,7 @@
     <link rel="icon" sizes="200x200" th:href="@{/images/kanpai-logo-icon.png}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,11 +18,12 @@
         </div>
         <nav>
             <ul>
-                <li><a th:href="@{/landing}">Home</a></li>
-                <li><a th:href="@{/landing#products-section}">Products</a></li>
-                <li><a href="">Contact us</a></li>
-                <li><a href="">About us</a></li>
-                <li><a th:href="@{/user/create}">Signup</a></li>
+                <li><a th:href="@{/landing}"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a th:href="@{/landing#products-section}"><i class="fa-solid fa-gift"></i> Products</a></li>
+                <li><a th:href="@{/user/contact}"><i class="fa-solid fa-address-book"></i> Contact us</a></li>
+                <li><a th:href="@{/user/aboutus}"><i class="fa-solid fa-address-card"></i> About us</a></li>
+                <li><a th:href="@{/user/notifications}"><i class="fa-solid fa-flag"></i> Notices</a></li>
+                <li><a th:href="@{/user/create}"><i class="fa-solid fa-user-plus"></i> Signup</a></li>
             </ul>
         </nav>
     </header>
