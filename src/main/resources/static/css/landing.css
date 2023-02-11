@@ -67,10 +67,16 @@ main {
 .button-cart {
     width: 80px;
     height: 30px;
+    background-color: #f28e1c;
+    border-radius: 4px;
+    color: white;
+    outline: 0;
+    border: 0;
 }
 .button-cart:hover {
-    background-color: #f28e1c;
-    color: black;
+    background-color: black;
+    color: #f28e1c;
+    border: 1px solid black;
     cursor: pointer;
 }
 .a-text {
