@@ -130,7 +130,7 @@ public class UserController {
                                        Model model) {
         userService.resetPassword(email, OTP, password);
         model.addAttribute("message", "Your password has been reset successfully.");
-        return "reset_password";
+        return "redirect:/login";
     }
 
     @GetMapping("/notifications")
