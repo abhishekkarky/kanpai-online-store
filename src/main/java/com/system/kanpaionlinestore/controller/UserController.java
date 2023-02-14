@@ -66,12 +66,6 @@ public class UserController {
         return "emailsuccess";
     }
 
-//    @GetMapping("")
-//    public String saveToCart(@PathVariable Integer id){
-//        productCartServices.saveToCart(id);
-//        return "cart_page";
-//    }
-
     @GetMapping("/cart/{id}")
     public String getCartPage(Model model, Principal principal) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

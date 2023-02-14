@@ -4,6 +4,8 @@ import com.system.kanpaionlinestore.entity.Product;
 import com.system.kanpaionlinestore.service.ProductService;
 import com.system.kanpaionlinestore.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.security.Principal;
 import java.util.Base64;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -23,7 +26,15 @@ public class LandingController {
     private final ProductService productService;
     private final UserService userService;
     @GetMapping("/landing")
-    public String getProductsPage(Model model, Principal principal) {
+    public String getProductsPage(Model model, Principal principal, Authentication authentication) {
+        if (authentication!=null){
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            for (GrantedAuthority grantedAuthority : authorities) {
+                if (grantedAuthority.getAuthority().equals("Admin")) {
+                    return "redirect:/admin/dashboard";
+                }
+            }
+        }
         List<Product> products = productService.fetchAll();
         if (principal!=null) {
             model.addAttribute("info", userService.findByEmail(principal.getName()));
