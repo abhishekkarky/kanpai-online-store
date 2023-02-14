@@ -11,4 +11,5 @@ public interface UserService {
     void processPasswordResetRequest(String email);
 
     void resetPassword(String email, String OTP, String password);
+
 }

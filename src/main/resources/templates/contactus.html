@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,11 +26,11 @@
     <div class="contact-wrap">
       <div class="contact-in">
         <h1>Send a Message</h1>
-        <form>
-          <input type="text" placeholder="Full Name" class="contact-in-input">
-          <input type="email" placeholder="Email" class="contact-in-input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-          <input type="text" placeholder="Subject" class="contact-in-input">
-          <textarea type="text" placeholder="Message" class="contact-in-textarea"></textarea>
+        <form th:method="post" th:action="@{/user/saveQueries}" th:object="${queries}">
+          <input type="text" name="name" id="name" placeholder="Full Name" class="contact-in-input" required th:field="*{name}">
+          <input type="email" name="email" id="email" placeholder="Email" class="contact-in-input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required th:field="*{email}">
+          <input type="text" name="subject" id="subject" placeholder="Subject" class="contact-in-input" required th:field="*{subject}">
+          <textarea type="text" name="message" id="message" placeholder="Message" class="contact-in-textarea" required th:field="*{message}"></textarea>
           <input type="submit" value="SUBMIT" class="contact-in-btn">
         </form>
         <script th:src="@{~/javascript/contact_page.js}"></script>

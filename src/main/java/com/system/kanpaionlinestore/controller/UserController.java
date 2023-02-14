@@ -2,6 +2,7 @@ package com.system.kanpaionlinestore.controller;
 
 import com.system.kanpaionlinestore.entity.*;
 import com.system.kanpaionlinestore.pojo.ProductCartPojo;
+import com.system.kanpaionlinestore.pojo.QueriesPojo;
 import com.system.kanpaionlinestore.pojo.UserPojo;
 import com.system.kanpaionlinestore.service.*;
 import com.system.kanpaionlinestore.service.impl.ProductCartServices;
@@ -23,6 +24,7 @@ public class UserController {
     private final UserService userService;
     private final ProductCartServices productCartServices;
     private final NotificationsService notificationsService;
+    private final QueryService queryService;
 
     @GetMapping("/create")
     public String createUser(Model model) {
@@ -37,15 +39,24 @@ public class UserController {
     }
 
     @GetMapping("/aboutus")
-    public String getAboutUsPage() {
+    public String getAboutUsPage(Model model, Principal principal) {
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
         return "/aboutus";
     }
     @GetMapping("/privacypolicy")
-    public String getPrivacyPolicyPage() {
+    public String getPrivacyPolicyPage(Model model, Principal principal) {
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
         return ("/privacypolicy");
     }
     @GetMapping("/shipping")
-    public String getShippingPolicyPage() {
+    public String getShippingPolicyPage(Model model, Principal principal) {
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
         return ("/shipping");
     }
 
@@ -62,10 +73,13 @@ public class UserController {
 //    }
 
     @GetMapping("/cart/{id}")
-    public String getCartPage(Model model) {
+    public String getCartPage(Model model, Principal principal) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return "login";
+        }
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
         }
         List<ProductCart> productCarts = productCartServices.fetchAll();
         model.addAttribute("productCart", productCarts.stream().map(productCart ->
@@ -91,7 +105,9 @@ public class UserController {
             return "login";
         }
         model.addAttribute("update", new UserPojo());
-        model.addAttribute("info", userService.findByEmail(principal.getName()));
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
         return "accountpage";
     }
     @PostMapping("/updateUser")
@@ -101,8 +117,17 @@ public class UserController {
     }
 
     @GetMapping("/contact")
-    public String getContactUsPage() {
+    public String getContactUsPage(Model model, Principal principal) {
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
+        model.addAttribute("queries", new QueriesPojo());
         return "contactus";
+    }
+    @PostMapping("/saveQueries")
+    public String saveQuery(@Valid QueriesPojo queriesPojo) {
+        queryService.save(queriesPojo);
+        return "redirect:/landing";
     }
 
     @GetMapping("/request-password-reset")
@@ -134,7 +159,10 @@ public class UserController {
     }
 
     @GetMapping("/notifications")
-    public String getNotifications(Model model) {
+    public String getNotifications(Model model,Principal principal) {
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
         List<Notifications> notifications = notificationsService.fetchAll();
         model.addAttribute("notice", notifications.stream().map(notice ->
                         Notifications.builder()

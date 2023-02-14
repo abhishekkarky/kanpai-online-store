@@ -18,7 +18,7 @@ public class LoginController {
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return "login";
         }
-        return "redirect:/user/landing";
+        return "redirect:/landing";
     }
     @PostMapping("/logout")
     public String logout(Authentication authentication) {

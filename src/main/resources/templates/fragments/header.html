@@ -19,7 +19,8 @@
                 <li><a th:href="@{/user/contact}"><i class="fa-solid fa-address-book"></i> Contact us</a></li>
                 <li><a th:href="@{/user/aboutus}"><i class="fa-solid fa-address-card"></i> About us</a></li>
                 <li><a th:href="@{/user/notifications}"><i class="fa-solid fa-flag"></i> Notices</a></li>
-                <li><a th:href="@{/user/create}"><i class="fa-solid fa-user-plus"></i> Signup</a></li>
+                <li th:if="${info!=null}"><a th:href="@{/user/profile}" th:text="${info.getName()}"><i class="fa-solid fa-user"></i> </a></li>
+                <li th:if="${info==null}"><a th:href="@{/user/profile}"><i class="fa-solid fa-user"></i> Login</a></li>
             </ul>
         </nav>
     </div>

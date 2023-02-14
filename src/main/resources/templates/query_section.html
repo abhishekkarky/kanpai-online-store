@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Add Notices</title>
+  <title>Queries</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" th:href="@{/css/notify_customers.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/order_list.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/css/admin_dashboard.css}">
 
 </head>
@@ -19,7 +19,7 @@
       <span class="material-icons-outlined">menu</span>
     </div>
     <div class="main-title">
-      <h2>Notify Customers</h2>
+      <h2>Query List</h2>
     </div>
 
   </header>
@@ -59,11 +59,34 @@
 
   <!-- Main -->
   <main class="main-container">
-    <form th:method="post" th:action="@{/admin/save/notices}" th:object="${notice}">
-      <input class="title" type="text" name="topic" id="topic" placeholder="Enter the notification topic..." required th:field="*{topic}" th:value="${notice.topic}">
-      <textarea class="description" name="description" id="description" placeholder="Enter the notification description..." required th:field="*{description}" th:value="${notice.description}"></textarea>
-      <button type="submit">Send notifications</button>
-    </form>
+    <div class="order-table">
+      <form>
+        <table class="content-table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Name of person</td>
+            <td>Email of the person</td>
+            <td>Subject of query</td>
+            <td>Message in description</td>
+          </tr>
+          <tr th:each="query:${queries}">
+            <td th:text="${query.name}">Name of person</td>
+            <td th:text="${query.email}">Email of the person</td>
+            <td th:text="${query.subject}">Subject of query</td>
+            <td th:text="${query.message}">Message in description</td>
+          </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
   </main>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>

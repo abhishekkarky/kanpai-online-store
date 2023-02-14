@@ -1,5 +1,6 @@
 package com.system.kanpaionlinestore.controller;
 import com.system.kanpaionlinestore.entity.Notifications;
+import com.system.kanpaionlinestore.entity.Queries;
 import com.system.kanpaionlinestore.pojo.*;
 import com.system.kanpaionlinestore.service.*;
 import jakarta.validation.Valid;
@@ -21,6 +22,7 @@ import java.util.List;
 public class AdminController {
     private final ProductService productService;
     private final NotificationsService notificationsService;
+    private final QueryService queryService;
     @GetMapping("/dashboard")
     public String getAdminPage() {
         return "admin_dashboard";
@@ -66,6 +68,12 @@ public class AdminController {
     public String deleteNotices(@PathVariable("id") Integer id) {
         notificationsService.deleteById(id);
         return "redirect:/admin/notice-list";
+    }
+    @GetMapping("/queries")
+    public String getQueryPage(Model model) {
+        List<Queries> queries = queryService.fetchAll();
+        model.addAttribute("queries", queries);
+        return "query_section";
     }
 
     @GetMapping("/settings")
