@@ -1,18 +1,24 @@
 package com.system.kanpaionlinestore.service.impl;
 
+import com.system.kanpaionlinestore.entity.Product;
 import com.system.kanpaionlinestore.entity.ProductCart;
 import com.system.kanpaionlinestore.pojo.ProductCartPojo;
 import com.system.kanpaionlinestore.repo.ProductCartRepo;
+import com.system.kanpaionlinestore.repo.ProductRepo;
+import com.system.kanpaionlinestore.repo.UserRepo;
 import com.system.kanpaionlinestore.service.ProductCartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ProductCartServices implements ProductCartService {
+    private final UserRepo userRepo;
     private final ProductCartRepo productCartRepo;
+    private final ProductRepo productRepo;
 
     @Override
     public List<ProductCart> fetchAll() {

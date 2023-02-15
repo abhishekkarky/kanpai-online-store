@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Notice List</title>
+  <title>User List</title>
+  <!-- <link rel="stylesheet" type="text/css" th:href="@{/css/admin-dashboard.css}"> -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-  <link rel="stylesheet" type="text/css" th:href="@{/css/notice-list.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/userlist.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/css/admin_dashboard.css}">
 
 </head>
@@ -20,7 +21,7 @@
       <span class="material-icons-outlined">menu</span>
     </div>
     <div class="main-title">
-      <h2>Notice List</h2>
+      <h2>User List</h2>
     </div>
 
   </header>
@@ -71,18 +72,27 @@
         <table class="content-table">
           <thead>
           <tr>
-            <th>Id</th>
-            <th>Topic</th>
-            <th>Description</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Number</th>
             <th>Action</th>
           </tr>
           </thead>
           <tbody>
-          <tr th:each="notice:${notice}">
-            <td th:text="${notice.id}"></td>
-            <td th:text="${notice.topic}"></td>
-            <td th:text="${notice.description}"></td>
-            <td><a class="edit_button" th:href="@{~/admin/edit/}+${notice.id}">Edit</a><a class="delete_button" th:href="@{~/admin/delete/}+${notice.id}">Delete</a></td>
+          <tr>
+            <td>Name of User</td>
+            <td>Email of User</td>
+            <td>Address of User</td>
+            <td>Number of User</td>
+            <td><button type="submit">Delete</button></td>
+          </tr>
+          <tr th:each="list:${userlist}">
+            <td th:text="${list.name}">Name of User</td>
+            <td th:text="${list.email}">Email of User</td>
+            <td th:text="${list.address}">Address of User</td>
+            <td th:text="${list.number}">Number of User</td>
+            <td><a class="delete_button" th:href="@{~/admin/deleteUser/}+${list.id}">Delete</a></td>
           </tr>
           </tbody>
         </table>

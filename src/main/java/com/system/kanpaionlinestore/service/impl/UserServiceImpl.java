@@ -23,10 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -127,6 +124,16 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new RuntimeException();
         }
+    }
+
+    @Override
+    public List<User> fetchAll() {
+        return this.userRepo.findAll();
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        userRepo.deleteById(id);
     }
 
     private String generateOTP() {

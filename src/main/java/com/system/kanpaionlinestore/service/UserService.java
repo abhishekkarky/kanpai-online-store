@@ -1,6 +1,9 @@
 package com.system.kanpaionlinestore.service;
 
+import com.system.kanpaionlinestore.entity.User;
 import com.system.kanpaionlinestore.pojo.UserPojo;
+
+import java.util.List;
 
 public interface UserService {
     String save(UserPojo userPojo);
@@ -12,4 +15,7 @@ public interface UserService {
 
     void resetPassword(String email, String OTP, String password);
 
+    List<User> fetchAll();
+
+    void deleteById(Integer id);
 }

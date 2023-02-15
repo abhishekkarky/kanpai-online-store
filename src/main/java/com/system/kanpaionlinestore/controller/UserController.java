@@ -66,32 +66,27 @@ public class UserController {
         return "emailsuccess";
     }
 
-    @GetMapping("/cart/{id}")
-    public String getCartPage(Model model, Principal principal) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            return "login";
-        }
-        if (principal!=null) {
-            model.addAttribute("info", userService.findByEmail(principal.getName()));
-        }
-        List<ProductCart> productCarts = productCartServices.fetchAll();
-        model.addAttribute("productCart", productCarts.stream().map(productCart ->
-                        ProductCart.builder()
-                                .id(productCart.getId())
-                                .name(productCart.getName())
-                                .quantity(productCart.getQuantity())
-                                .price(productCart.getPrice())
-                                .build()
-                )
-        );
-        return "cart_page";
-    }
-    @PostMapping("/saveCart")
-    public String saveProductCart(@Valid ProductCartPojo productCartPojo) {
-        productCartServices.save(productCartPojo);
-        return "redirect:/user/cart";
-    }
+//    @GetMapping("/cart/{id}")
+//    public String getCartPage(Model model, Principal principal, ProductCartPojo productCartPojo) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+//            return "login";
+//        }
+//        if (principal!=null) {
+//            model.addAttribute("info", userService.findByEmail(principal.getName()));
+//        }
+//        Integer id = userService.findByEmail(principal.getName()).getId();
+//        List<ProductCart> list = productCartServices.fetchAll(id);
+//        model.addAttribute("cart", productCartPojo);
+//        model.addAttribute("cartItems", list);
+//        return "cart_page";
+//    }
+//    @PostMapping("/saveCart")
+//    public String saveProductCart(@Valid ProductCartPojo productCartPojo) {
+//        productCartServices.save(productCartPojo);
+//        return "redirect:/user/cart";
+//    }
+
     @GetMapping("/profile")
     public String getUserProfile (Integer id, Model model, Principal principal) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

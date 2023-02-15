@@ -1,6 +1,7 @@
 package com.system.kanpaionlinestore.controller;
 import com.system.kanpaionlinestore.entity.Notifications;
 import com.system.kanpaionlinestore.entity.Queries;
+import com.system.kanpaionlinestore.entity.User;
 import com.system.kanpaionlinestore.pojo.*;
 import com.system.kanpaionlinestore.service.*;
 import jakarta.validation.Valid;
@@ -47,6 +48,32 @@ public class AdminController {
         }
         productService.save(productPojo);
         return "redirect:/landing";
+    }
+    @GetMapping("/user-list")
+    public String getUserListPage(Model model, Principal principal) {
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
+        List<User> users = userService.fetchAll();
+        model.addAttribute("userlist", users.stream().map(user ->
+                User.builder()
+                        .id(user.getId())
+                        .name(user.getName())
+                        .email(user.getEmail())
+                        .address(user.getAddress())
+                        .number(user.getNumber())
+                        .build()
+
+        ));
+        return "userlist";
+    }
+    @GetMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable("id") Integer id, Model model, Principal principal) {
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
+        userService.deleteById(id);
+        return "redirect:/admin/user-list";
     }
     @GetMapping("/add-notices")
     public String addNotices(Model model, Principal principal) {

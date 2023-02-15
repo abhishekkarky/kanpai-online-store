@@ -65,6 +65,9 @@ main {
     justify-content: space-between;
 }
 .button-cart {
+    display: flex;
+    justify-content: center;
+    align-content: center;
     width: 80px;
     height: 30px;
     background-color: #f28e1c;
@@ -72,6 +75,7 @@ main {
     color: white;
     outline: 0;
     border: 0;
+    font-size: 11px;
 }
 .button-cart:hover {
     background-color: black;
