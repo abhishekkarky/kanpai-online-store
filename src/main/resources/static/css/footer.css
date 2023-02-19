@@ -75,6 +75,17 @@ img {
     color: #24262b;
     background-color: #ffffff;
 }
+li a::after {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 0;
+    background: #000000;
+    transition: all .5s;
+}
+li a:hover::after {
+    width: 100%;
+}
 
 /*responsive*/
 @media(max-width: 767px){

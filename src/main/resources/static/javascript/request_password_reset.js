@@ -1,6 +1,5 @@
 let email = document.getElementById("email")
-let password = document.getElementById("password")
-let form = document.getElementById("login_form")
+let form = document.getElementById("request-form")
 let format = ('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')
 let error = document.getElementById("error")
 form.addEventListener("submit", (e) => {
@@ -10,9 +9,6 @@ form.addEventListener("submit", (e) => {
     }
     if (!email.value.match(format)) {
         messages.push("Enter a valid email address")
-    }
-    if (password.value.length < 8 || password.value.length > 12) {
-        messages.push("Password must be length of 8-12")
     }
     if (messages.length > 0) {
         e.preventDefault()

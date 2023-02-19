@@ -7,28 +7,18 @@
     <title>Login</title>
     <link rel="icon" sizes="200x200" th:href="@{/images/kanpai-logo-icon.png}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
     <script th:src="@{/javascript/login.js}" defer></script>
+    <script th:src="@{/javascript/header.js}" defer></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-<header>
-    <div class="logo">
-        <img class="head-img" th:src="@{~/images/Kanpai_logo.png}" alt="">
-    </div>
-    <nav>
-        <ul>
-            <li><a th:href="@{/landing}"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a th:href="@{/landing#products-section}"><i class="fa-solid fa-gift"></i> Products</a></li>
-            <li><a th:href="@{/user/contact}"><i class="fa-solid fa-address-book"></i> Contact us</a></li>
-            <li><a th:href="@{/user/aboutus}"><i class="fa-solid fa-address-card"></i> About us</a></li>
-            <li><a th:href="@{/user/notifications}"><i class="fa-solid fa-flag"></i> Notices</a></li>
-            <li><a th:href="@{/user/create}"><i class="fa-solid fa-user-plus"></i> Signup</a></li>
-        </ul>
-    </nav>
-</header>
+<header th:replace="~{/fragments/header.html}"></header>
 <main>
     <div id="error"></div>
     <div class="main-container">
@@ -56,6 +46,7 @@
                 </div>
                 <div class="for-forgot-password">
                     <h5>Forgot your password?<a th:href="@{/user/request-password-reset}">Click here...</a></h5>
+                    <h5>Don't have an account?<a th:href="@{/user/create}">Click here...</a></h5>
                 </div>
             </form>
         </div>
