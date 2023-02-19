@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
   <link rel="stylesheet" type="text/css" th:href="@{/css/userlist.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/css/admin_dashboard.css}">
 
@@ -45,6 +46,9 @@
         <i class="fa-solid fa-list-ul"></i> <a th:href="@{/admin/user-list}">User List</a>
       </li>
       <li class="sidebar-list-item">
+        <i class="fa-solid fa-list-ul"></i> <a th:href="@{/admin/product-list}">Products List</a>
+      </li>
+      <li class="sidebar-list-item">
         <i class="fa-solid fa-plus"></i> <a th:href="@{/admin/add-product}">Add Products</a>
       </li>
       <li class="sidebar-list-item">
@@ -69,7 +73,7 @@
   <main class="main-container">
     <div class="order-table">
       <form>
-        <table class="content-table">
+        <table class="content-table" id="table_id">
           <thead>
           <tr>
             <th>Name</th>
@@ -87,7 +91,7 @@
             <td>Number of User</td>
             <td><button type="submit">Delete</button></td>
           </tr>
-          <tr th:each="list:${userlist}">
+          <tr class="tr-table" th:each="list:${userlist}">
             <td th:text="${list.name}">Name of User</td>
             <td th:text="${list.email}">Email of User</td>
             <td th:text="${list.address}">Address of User</td>
@@ -96,6 +100,24 @@
           </tr>
           </tbody>
         </table>
+        <script
+                type="text/javascript"
+                charset="utf8"
+                src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+        ></script>
+        <script
+                type="text/javascript"
+                charset="utf8"
+                src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+          document.getElementsByClassName()
+        </script>
+        <script>
+          $(function() {
+            $("#table_id").dataTable();
+          });
+        </script>
+
+        <br><br>
       </form>
     </div>
   </main>

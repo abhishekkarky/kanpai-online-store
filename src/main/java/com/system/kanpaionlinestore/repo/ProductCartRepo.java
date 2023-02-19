@@ -10,5 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface ProductCartRepo extends JpaRepository<ProductCart, Integer> {
-
+    @Query(value = "SELECT * FROM KOS_PRODUCTS_CARTS WHERE user_id = ?1", nativeQuery = true)
+    Optional<List<ProductCart>> fetchAll(Integer userId);
 }

@@ -19,12 +19,15 @@ main {
 }
 .content-table thead tr {
     background-color: #f28e1c;
-    color: #ffffff;
+    color: black;
     text-align: left;
     font-weight: bold;
+    height: 40px;
 }
 .content-table tr {
+    height: 50px;
     width: 10px;
+    background-color: #3A3A3A;
 }
 .content-table th {
     padding: 12px 15px;
@@ -33,15 +36,21 @@ main {
 }
 .content-table td {
     padding: 12px 15px;
+    color: black;
     border-bottom: 1px solid #dddddd;
 }
 
-button {
-    font-size: 15px;
+.edit-button, .delete-button {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    font-size: 13px;
     width: 90px;
     height: 40px;
-    border-radius: 12px;
-    background-color: rgb(237, 79, 51);
+    border-radius: 5px;
+}
+.edit-button:hover, .delete-button:hover {
+    color: red;
 }
 fieldset {
     display: flex;

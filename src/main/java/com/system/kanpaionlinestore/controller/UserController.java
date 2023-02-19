@@ -22,7 +22,6 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
-    private final ProductCartServices productCartServices;
     private final NotificationsService notificationsService;
     private final QueryService queryService;
 
@@ -65,28 +64,6 @@ public class UserController {
         this.userService.sendEmail();
         return "emailsuccess";
     }
-
-//    @GetMapping("/cart/{id}")
-//    public String getCartPage(Model model, Principal principal, ProductCartPojo productCartPojo) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-//            return "login";
-//        }
-//        if (principal!=null) {
-//            model.addAttribute("info", userService.findByEmail(principal.getName()));
-//        }
-//        Integer id = userService.findByEmail(principal.getName()).getId();
-//        List<ProductCart> list = productCartServices.fetchAll(id);
-//        model.addAttribute("cart", productCartPojo);
-//        model.addAttribute("cartItems", list);
-//        return "cart_page";
-//    }
-//    @PostMapping("/saveCart")
-//    public String saveProductCart(@Valid ProductCartPojo productCartPojo) {
-//        productCartServices.save(productCartPojo);
-//        return "redirect:/user/cart";
-//    }
-
     @GetMapping("/profile")
     public String getUserProfile (Integer id, Model model, Principal principal) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

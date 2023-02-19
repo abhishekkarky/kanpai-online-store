@@ -45,4 +45,14 @@ public class ProductServiceImpl implements ProductService {
         productRepo.save(product);
         return "created";
     }
+
+    @Override
+    public Product fetchById(Integer id) {
+        return productRepo.findById(id).orElseThrow(()->new RuntimeException("not found"));
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        productRepo.deleteById(id);
+    }
 }

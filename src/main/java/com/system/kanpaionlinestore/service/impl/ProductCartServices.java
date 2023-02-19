@@ -38,15 +38,47 @@ public class ProductCartServices implements ProductCartService {
         return "saved";
     }
 
-//    @Override
-//    public String saveToCart(Integer id, Principal principal) {
-//        ProductCart productCart = new ProductCart();
-//
-//        productCart.setProduct(productCartRepo.findById(id).orElseThrow().getProduct());
-//        productCart.setName(productCart.getName());
-//        productCart.setQuantity(1);
-//        productCart.setPrice(productCart.getPrice());
-//        ProductCartRepo.save(productCart);
-//        return "Saved";
-//    }
+    @Override
+    public String saveToCart(Integer id, Principal principal) {
+        ProductCart productCart = new ProductCart();
+        productCart.setUser(userRepo.findByEmail(principal.getName()).orElseThrow());
+        productCart.setProduct(productRepo.findById(id).orElseThrow());
+        productCart.setName(productCart.getName());
+        productCart.setPrice(productCart.getPrice());
+        productCart.setQuantity(1);
+        productCartRepo.save(productCart);
+
+        return "Saved";
+    }
+
+    @Override
+    public ProductCart fetchOne(Integer id) {
+        return productCartRepo.findById(id).orElseThrow();
+    }
+
+    @Override
+    public String deleteFromCart(Integer id) {
+        productCartRepo.deleteById(id);
+        return "Deleted";
+    }
+
+    @Override
+    public String updateQuantity(ProductCart productCart) {
+        productCartRepo.save(productCart);
+        return "Updated";
+    }
+
+    @Override
+    public List<ProductCart> fetchAll(Integer id) {
+        List<ProductCart> allItems = productCartRepo.fetchAll(id).orElseThrow();
+        for (ProductCart productCart : allItems){
+            productCart.setProduct(Product.builder()
+                    .id(productCart.getProduct().getId())
+                    .quantity(productCart.getProduct().getQuantity())
+                    .name(productCart.getProduct().getName())
+                    .price(productCart.getProduct().getPrice())
+                    .build());
+        }
+        return allItems;
+    }
 }

@@ -1,5 +1,6 @@
 package com.system.kanpaionlinestore.controller;
 import com.system.kanpaionlinestore.entity.Notifications;
+import com.system.kanpaionlinestore.entity.Product;
 import com.system.kanpaionlinestore.entity.Queries;
 import com.system.kanpaionlinestore.entity.User;
 import com.system.kanpaionlinestore.pojo.*;
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.security.Principal;
+import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -98,6 +102,40 @@ public class AdminController {
         }
         return "order_list";
     }
+    @GetMapping("/product-list")
+    public String getProductList(Model model, Principal principal) {
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
+        List<Product> products = productService.fetchAll();
+        model.addAttribute("product", products.stream().map(product ->
+                Product.builder()
+                        .id(product.getId())
+                        .imageBase64(getImageBase64(product.getPhoto()))
+                        .name(product.getName())
+                        .quantity(product.getQuantity())
+                        .price(product.getPrice())
+                        .build()
+                ));
+        return "productlist";
+    }
+    @GetMapping("/editProduct/{id}")
+    public String editProducts(@PathVariable("id") Integer id, Model model, Principal principal) {
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
+        Product products = productService.fetchById(id);
+        model.addAttribute("product", new ProductPojo(products));
+        return "add_products";
+    }
+    @GetMapping("/deleteProduct/{id}")
+    public String deleteProducts(@PathVariable("id") Integer id, Model model, Principal principal) {
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
+        productService.deleteById(id);
+        return "redirect:/admin/product-list";
+    }
     @GetMapping("/notice-list")
     public String getNoticeList(Model model, Principal principal) {
         if (principal!=null) {
@@ -140,6 +178,19 @@ public class AdminController {
             model.addAttribute("info", userService.findByEmail(principal.getName()));
         }
         return "admin_settings";
+    }
+    public String getImageBase64(String fileName) {
+        String filePath = System.getProperty("user.dir") + "/kanpai_store/";
+        File file = new File(filePath + fileName);
+        byte[] bytes = new byte[0];
+        try {
+            bytes = Files.readAllBytes(file.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        String base64 = Base64.getEncoder().encodeToString(bytes);
+        return base64;
     }
 
 }

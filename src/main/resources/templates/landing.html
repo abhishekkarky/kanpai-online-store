@@ -29,8 +29,7 @@
                     <p th:text="${products.name}"></p>
                     <div class="info">
                         <p th:text="${products.price}"></p>
-<!--                        <a class="button-cart" th:href="@{/user/cart/}+${product.id}">Add to cart</a>-->
-                        <button class="button-cart" type="submit">Add to cart <i class="fa-solid fa-cart-shopping"></i></button>
+                        <a class="button-cart" th:href="@{/cart/add/}+${products.id}">Add to cart <i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
                 </div>
             </form>

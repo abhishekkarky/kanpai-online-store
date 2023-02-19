@@ -24,10 +24,15 @@ public class ProductCart {
     private Integer quantity;
     @Column(name = "price", nullable = false)
     private Integer price;
-    @ManyToOne
-    @JoinColumn ( name ="product_id", nullable = false )
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_productId"))
     private Product product;
-    @ManyToOne
-    @JoinColumn ( name ="user_id", nullable = false )
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_userId"))
     private User user;
 }

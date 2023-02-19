@@ -74,11 +74,22 @@ main {
 }
 .container-right {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
     width: 35%;
     background-color: whitesmoke;
     border: 1.5px solid black;
+}
+#error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    color: red;
+    width: 100%;
+    font-weight: bold;
+    font-size: 15px;
 }
 form {
     display: flex;
@@ -90,7 +101,7 @@ form {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    height: 15vh;
+    height: 9vh;
 }
 .h2 {
     margin-left: 35px;
@@ -103,6 +114,7 @@ form {
     align-items: center;
     height: 50vh;
     width: 100%;
+    margin-top: 15px;
 }
 .input {
     height: 45px;
@@ -111,6 +123,7 @@ form {
     margin-top: 10px;
     border-radius: 6px;
     font-size: 15px;
+    padding-left: 10px;
 }
 .signup-button {
     width: 85%;
@@ -124,6 +137,7 @@ form {
 .for-login {
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 .for-login a {
     text-decoration: none;

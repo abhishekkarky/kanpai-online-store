@@ -74,11 +74,22 @@ main {
 }
 .container-right {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
     width: 35%;
     background-color: whitesmoke;
     border: 1.5px solid black;
+}
+#error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    color: red;
+    width: 100%;
+    font-weight: bold;
+    font-size: 15px;
 }
 form {
     display: flex;
@@ -90,7 +101,7 @@ form {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    height: 15vh;
+    height: 10vh;
 }
 .h2 {
     margin-left: 35px;
@@ -110,6 +121,7 @@ form {
     font-size: 13px;
     margin-top: 20px;
     border-radius: 6px;
+    padding-left: 10px;
     font-size: 15px;
 }
 .login-button {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>All Orders</title>
+  <title>Product List</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -21,7 +21,7 @@
       <span class="material-icons-outlined">menu</span>
     </div>
     <div class="main-title">
-      <h2>Order List</h2>
+      <h2>Products List</h2>
     </div>
 
   </header>
@@ -75,69 +75,34 @@
         <table class="content-table" id="table_id">
           <thead>
           <tr>
+            <th>Product Image</th>
             <th>Product Name</th>
-            <th>Volume</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total Amount</th>
-            <th>Status</th>
+            <th>Product Quantity</th>
+            <th>Product Price</th>
             <th>Action</th>
           </tr>
           </thead>
           <tbody>
           <tr>
+            <td>Image</td>
             <td>Whiskey</td>
             <td>800ml</td>
-            <td>1</td>
-            <td>4000</td>
-            <td>4000</td>
-            <td>
-              <fieldset data-role="controlgroup">
-                <label for="Confirm">Confirming</label>
-                <input type="checkbox" name="favcolor" id="red" value="red" checked>
-                <label for="Ongoing">Ongoing</label>
-                <input type="checkbox" name="favcolor" id="green" value="green">
-                <label for="Delivered">Delivered</label>
-                <input type="checkbox" name="favcolor" id="blue" value="blue" checked>
-              </fieldset>
-            </td>
-            <td><button class="delete-button" type="submit">Delete</button></td>
+            <td>Rs. Price</td>
+            <td><a class="edit-button">Edit </a> <a class="delete-button">Delete</a></td>
           </tr>
           <tr>
+            <td>Image</td>
             <td>Whiskey</td>
             <td>800ml</td>
-            <td>1</td>
-            <td>4000</td>
-            <td>4000</td>
-            <td>
-              <fieldset data-role="controlgroup">
-                <label for="Confirm">Confirming</label>
-                <input type="checkbox" name="favcolor" id="red" value="red" checked>
-                <label for="Ongoing">Ongoing</label>
-                <input type="checkbox" name="favcolor" id="green" value="green">
-                <label for="Delivered">Delivered</label>
-                <input type="checkbox" name="favcolor" id="blue" value="blue" checked>
-              </fieldset>
-            </td>
-            <td><button type="submit">Delete</button></td>
+            <td>Rs. Price</td>
+            <td><a class="edit-button">Edit </a> <a class="delete-button">Delete</a></td>
           </tr>
-          <tr>
-            <td>Whiskey</td>
-            <td>800ml</td>
-            <td>1</td>
-            <td>4000</td>
-            <td>4000</td>
-            <td>
-              <fieldset data-role="controlgroup">
-                <label for="Confirm">Confirming</label>
-                <input type="checkbox" name="confirming" id="confirm" value="confirming" checked>
-                <label for="Ongoing">Ongoing</label>
-                <input type="checkbox" name="checkbox" id="ongoing" value="Ongoing">
-                <label for="Delivered">Delivered</label>
-                <input type="checkbox" name="delivered" id="delivered" value="delivered" checked>
-              </fieldset>
-            </td>
-            <td><button type="submit">Delete</button></td>
+          <tr th:each="products:${product}">
+            <td><img th:src="'data:image/png;base64,'+${products.imageBase64}" width="100" height="100"/></td>
+            <td th:text="${products.name}"></td>
+            <td th:text="${products.quantity}"></td>
+            <td th:text="${products.price}"></td>
+            <td><a class="edit-button" th:href="@{~/admin/editProduct/}+${products.id}">Edit </a> <a class="delete-button" th:href="@{~/admin/deleteProduct/}+${products.id}">Delete</a></td>
           </tr>
           </tbody>
         </table>
