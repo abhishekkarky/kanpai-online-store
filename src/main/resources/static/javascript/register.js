@@ -27,13 +27,10 @@ form.addEventListener("submit", (e) => {
     if (address.value === "" || address.value == null) {
         messages.push("Address is required")
     }
-    if (create.value.length <= 8 || create.value.length > 12) {
-        messages.push("Passsword must be length of 8-12")
+    if (create.value.length < 8 || create.value.length > 12) {
+        messages.push("Password must be length of 8-12")
     }
-    if (confirm.value.length <= 8 || confirm.value.length > 12) {
-        messages.push("Passsword must be length of 8-12")
-    }
-    if (!create.value.match(confirm)) {
+    if (!create.value.match(confirm.value)) {
         messages.push("Make sure to confirm your password before we create your account")
     }
     if (messages.length > 0) {

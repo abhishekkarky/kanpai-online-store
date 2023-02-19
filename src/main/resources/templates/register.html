@@ -12,49 +12,67 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img class="head-img" th:src="@{~/images/Kanpai_logo.png}" alt="">
+<header>
+    <div class="logo">
+        <img class="head-img" th:src="@{~/images/Kanpai_logo.png}" alt="">
+    </div>
+    <nav>
+        <ul>
+            <li><a th:href="@{/landing}"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a th:href="@{/landing#products-section}"><i class="fa-solid fa-gift"></i> Products</a></li>
+            <li><a th:href="@{/user/contact}"><i class="fa-solid fa-address-book"></i> Contact us</a></li>
+            <li><a th:href="@{/user/aboutus}"><i class="fa-solid fa-address-card"></i> About us</a></li>
+            <li><a th:href="@{/user/notifications}"><i class="fa-solid fa-flag"></i> Notices</a></li>
+            <li><a th:href="@{/user/create}"><i class="fa-solid fa-user-plus"></i> Signup</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="error"></div>
+    <div class="main-container">
+        <div class="container-left">
+            <img class="container-left-logo" th:src="@{/images/Kanpai_logo.png}" alt="">
         </div>
-        <nav>
-            <ul>
-                <li><a th:href="@{/landing}"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a th:href="@{/landing#products-section}"><i class="fa-solid fa-gift"></i> Products</a></li>
-                <li><a th:href="@{/user/contact}"><i class="fa-solid fa-address-book"></i> Contact us</a></li>
-                <li><a th:href="@{/user/aboutus}"><i class="fa-solid fa-address-card"></i> About us</a></li>
-                <li><a th:href="@{/user/notifications}"><i class="fa-solid fa-flag"></i> Notices</a></li>
-                <li><a th:href="@{/user/create}"><i class="fa-solid fa-user-plus"></i> Signup</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <div class="main-container">
-            <div class="container-left">
-                <img class="container-left-logo" th:src="@{/images/Kanpai_logo.png}" alt="">
-            </div>
-            <div class="container-right">
-                <div id="error"></div>
-                <form id="register_form" th:method="post" th:action="@{/user/save}" th:object="${user}">
-                    <div class="h2-text">
-                        <h2 class="h2">
-                            Registration Form
-                        </h2>
-                    </div>
-                    <div class="for-fields">
+        <div class="container-right">
+            <form id="register_form" th:method="post" th:action="@{/user/save}" th:object="${user}">
+                <div class="h2-text">
+                    <h2 class="h2">
+                        Registration Form
+                    </h2>
+                </div>
+                <div class="for-fields">
+                    <div class="input-fields">
+                        <i class="fa-solid fa-user"></i>
                         <input class="input" type="text" id="name" name="name" placeholder="Full Name..." th:field="*{name}" th:value="${user.name}">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-envelope"></i>
                         <input class="input" type="email" id="email" name="email" placeholder="Email-address..." th:field="*{email}" th:value="${user.email}">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-mobile"></i>
                         <input class="input" type="tel" id="number" name="number" placeholder="Mobile Number..." th:field="*{number}" th:value="${user.number}">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-location-dot"></i>
                         <input class="input" type="text" id="address" name="address" placeholder="Address..." th:field="*{address}" th:value="${user.address}">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-lock"></i>
                         <input class="input" type="password" id="create-password" name="password" placeholder="Create a password..." th:field="*{password}" th:value="${user.password}">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-lock"></i>
                         <input class="input" type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password...">
-                        <button class="signup-button" id="button" type="submit">Signup</button>
                     </div>
-                    <div class="for-login">
-                        <h5>Already have an account?<a th:href="@{/login}">Login here...</a></h5>
-                    </div>
-                </form>
-            </div>
+                    <button class="signup-button" id="button" type="submit">Signup</button>
+                </div>
+                <div class="for-login">
+                    <h5>Already have an account?<a th:href="@{/login}">Login here...</a></h5>
+                </div>
+            </form>
         </div>
-    </main>
+    </div>
+</main>
 </body>
 </html>

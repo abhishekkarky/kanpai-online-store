@@ -10,48 +10,56 @@
     <script th:src="@{/javascript/login.js}" defer></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img class="head-img" th:src="@{~/images/Kanpai_logo.png}" alt="">
+<header>
+    <div class="logo">
+        <img class="head-img" th:src="@{~/images/Kanpai_logo.png}" alt="">
+    </div>
+    <nav>
+        <ul>
+            <li><a th:href="@{/landing}"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a th:href="@{/landing#products-section}"><i class="fa-solid fa-gift"></i> Products</a></li>
+            <li><a th:href="@{/user/contact}"><i class="fa-solid fa-address-book"></i> Contact us</a></li>
+            <li><a th:href="@{/user/aboutus}"><i class="fa-solid fa-address-card"></i> About us</a></li>
+            <li><a th:href="@{/user/notifications}"><i class="fa-solid fa-flag"></i> Notices</a></li>
+            <li><a th:href="@{/user/create}"><i class="fa-solid fa-user-plus"></i> Signup</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="error"></div>
+    <div class="main-container">
+        <div class="container-left">
+            <img class="container-left-logo" th:src="@{/images/Kanpai_logo.png}" alt="">
         </div>
-        <nav>
-            <ul>
-                <li><a th:href="@{/landing}"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a th:href="@{/landing#products-section}"><i class="fa-solid fa-gift"></i> Products</a></li>
-                <li><a th:href="@{/user/contact}"><i class="fa-solid fa-address-book"></i> Contact us</a></li>
-                <li><a th:href="@{/user/aboutus}"><i class="fa-solid fa-address-card"></i> About us</a></li>
-                <li><a th:href="@{/user/notifications}"><i class="fa-solid fa-flag"></i> Notices</a></li>
-                <li><a th:href="@{/user/create}"><i class="fa-solid fa-user-plus"></i> Signup</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <div class="main-container">
-            <div class="container-left">
-                <img class="container-left-logo" th:src="@{/images/Kanpai_logo.png}" alt="">
-            </div>
-            <div class="container-right">
-                <div id="error"></div>
-                <form id="login_form" action="#" th:action="@{/login}" method="post">
-                    <div class="h2-text">
-                        <h2 class="h2">
-                            Login Form
-                        </h2>
+        <div class="container-right">
+            <form id="login_form" action="#" th:action="@{/login}" method="post">
+                <div class="h2-text">
+                    <h2 class="h2">
+                        Login
+                    </h2>
+                    <h3 class="h3">Welcome! Please enter your details.</h3>
+                </div>
+                <div class="login-fields">
+                    <div class="input-fields">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input class="input" type="email" id="email" name="email" placeholder="Enter your email address...">
                     </div>
-                    <div class="login-fields">
-                        <input class="input" type="email" id="email" name="email" placeholder="Enter your email...">
+                    <div class="input-fields">
+                        <i class="fa-solid fa-lock"></i>
                         <input class="input" type="password" id="password" name="password" placeholder="Enter your password...">
-                        <button class="login-button" id="button" type="submit">login</button>
                     </div>
-                    <div class="for-forgot-password">
-                        <h5>Forgot your password?<a th:href="@{/user/request-password-reset}">Click here...</a></h5>
-                    </div>
-                </form>
-            </div>
+                    <button class="login-button" id="button" type="submit">login</button>
+                </div>
+                <div class="for-forgot-password">
+                    <h5>Forgot your password?<a th:href="@{/user/request-password-reset}">Click here...</a></h5>
+                </div>
+            </form>
         </div>
-    </main>
+    </div>
+</main>
 </body>
 </html>
