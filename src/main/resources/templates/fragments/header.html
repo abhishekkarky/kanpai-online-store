@@ -2,13 +2,13 @@
     <img th:src="@{~/images/Kanpai_logo.png}" class="logo">
     <nav class="navbar">
         <ul class="navbar-list">
-            <li><a class="navbar-link" th:href="@{/landing}"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a class="navbar-link" th:href="@{/landing#products-section}"><i class="fa-solid fa-gift"></i> Products</a></li>
-            <li><a class="navbar-link" th:href="@{/user/contact}"><i class="fa-solid fa-address-book"></i> Contact us</a></li>
-            <li><a class="navbar-link" th:href="@{/user/aboutus}"><i class="fa-solid fa-address-card"></i> About us</a></li>
-            <li><a class="navbar-link" th:href="@{/user/notifications}"><i class="fa-solid fa-flag"></i> Notices</a></li>
-            <li th:if="${info!=null}"><a class="navbar-link" th:href="@{/user/profile}" th:text="${info.getName()}"><i class="fa-solid fa-user"></i> </a></li>
-            <li th:if="${info==null}"><a class="navbar-link" th:href="@{/user/profile}"><i class="fa-solid fa-user"></i> Login</a></li>
+            <li><a class="navbar-link click" id="landing" th:href="@{/landing}"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a class="navbar-link click" th:href="@{/landing#products-section}"><i class="fa-solid fa-gift"></i> Products</a></li>
+            <li><a class="navbar-link click" id="contact" th:href="@{/user/contact}"><i class="fa-solid fa-address-book"></i> Contact us</a></li>
+            <li><a class="navbar-link click" id="about" th:href="@{/user/aboutus}"><i class="fa-solid fa-address-card"></i> About us</a></li>
+            <li><a class="navbar-link click" id="notices" th:href="@{/user/notifications}"><i class="fa-solid fa-flag"></i> Notices</a></li>
+            <li th:if="${info!=null}"><a class="navbar-link click" id="profile" th:href="@{/user/profile}" th:text="${info.getName()}"><i class="fa-solid fa-user"></i> </a></li>
+            <li th:if="${info==null}"><a class="navbar-link click" id="profile" th:href="@{/user/profile}"><i class="fa-solid fa-user"></i> Login</a></li>
         </ul>
     </nav>
 

@@ -171,3 +171,40 @@ form {
     margin-left: 4px;
     color: black;
 }
+@media (max-width: 1280px) {
+    .main-container {
+        justify-content: center;
+        align-items: center;
+    }
+    .container-right {
+        width: 70%;
+    }
+    .container-left {
+        display: none;
+    }
+}
+
+@media (max-width: 654px) {
+    form {
+        justify-content: space-between;
+    }
+    .main-container {
+        justify-content: center;
+        align-items: center;
+    }
+    .container-right {
+        width: 100%;
+        height: 100%;
+    }
+}
+@media (max-width: 449px) {
+    form {
+        justify-content: space-between;
+    }
+    .input-fields {
+        width: 80%;
+    }
+    .input {
+        width: 80%;
+    }
+}

@@ -1,10 +1,12 @@
 package com.system.kanpaionlinestore.service.impl;
 
 import com.system.kanpaionlinestore.config.PasswordEncoderUtil;
+import com.system.kanpaionlinestore.entity.Product;
 import com.system.kanpaionlinestore.entity.User;
 import com.system.kanpaionlinestore.exception.AppException;
 import com.system.kanpaionlinestore.pojo.UserPojo;
 import com.system.kanpaionlinestore.repo.EmailCredRepo;
+import com.system.kanpaionlinestore.repo.ProductRepo;
 import com.system.kanpaionlinestore.repo.UserRepo;
 import com.system.kanpaionlinestore.service.UserService;
 import freemarker.template.Configuration;
@@ -33,13 +35,17 @@ public class UserServiceImpl implements UserService {
     private final EmailCredRepo emailCredRepo;
     private final ThreadPoolTaskExecutor taskExecutor;
     private final UserPojo userPojo;
+    private final ProductRepo productRepo;
 
     @Autowired
     @Qualifier("emailConfigBean")
     private Configuration emailConfig;
     @Override
     public String save(UserPojo userPojo) {
-        User user=new User();
+        User user = new User();
+        if(userPojo.getId()!=null){
+            user.setId(userPojo.getId());
+        }
         user.setName(userPojo.getName());
         user.setEmail(userPojo.getEmail());
         user.setNumber(userPojo.getNumber());
@@ -92,7 +98,6 @@ public class UserServiceImpl implements UserService {
         user.setEmail(userPojo.getEmail());
         user.setNumber(userPojo.getNumber());
         user.setAddress(userPojo.getAddress());
-        user.setPassword(PasswordEncoderUtil.getInstance().encode(userPojo.getPassword()));
         userRepo.save(user);
         return "created";
     }
@@ -134,6 +139,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(Integer id) {
         userRepo.deleteById(id);
+    }
+
+    @Override
+    public Product fetchById(Integer id) {
+        return this.productRepo.findById(id).orElseThrow(()->new RuntimeException("not found"));
     }
 
     private String generateOTP() {

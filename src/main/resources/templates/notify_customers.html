@@ -69,8 +69,9 @@
   <!-- Main -->
   <main class="main-container">
     <form th:method="post" th:action="@{/admin/save/notices}" th:object="${notice}">
-      <input class="title" type="text" name="topic" id="topic" placeholder="Enter the notification topic..." required th:field="*{topic}" th:value="${notice.topic}">
-      <textarea class="description" name="description" id="description" placeholder="Enter the notification description..." required th:field="*{description}" th:value="${notice.description}"></textarea>
+      <input type="number" hidden="hidden" th:field="*{id}" th:value="${notice.id}">
+      <input class="title" type="text" name="topic" id="topic" placeholder="Enter the notification topic..." required th:field="*{topic}" th:value="${notice.getTopic()}">
+      <textarea class="description" name="description" id="description" placeholder="Enter the notification description..." required th:field="*{description}" th:value="${notice.getDescription()}"></textarea>
       <button type="submit">Send notifications</button>
     </form>
   </main>

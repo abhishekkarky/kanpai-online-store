@@ -1,5 +1,6 @@
 package com.system.kanpaionlinestore.service;
 
+import com.system.kanpaionlinestore.entity.Product;
 import com.system.kanpaionlinestore.entity.User;
 import com.system.kanpaionlinestore.pojo.UserPojo;
 
@@ -18,4 +19,6 @@ public interface UserService {
     List<User> fetchAll();
 
     void deleteById(Integer id);
+
+    Product fetchById(Integer id);
 }

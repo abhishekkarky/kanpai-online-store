@@ -6,10 +6,12 @@
 body {
     flex-wrap: wrap;
     font-family: 'Poppins', sans-serif;
-    background-color: #D2D2D2;
+    background-color: #f28e1c;
+    overflow-x: hidden;
 }
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* For main */
@@ -18,7 +20,8 @@ main {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    width: 1440px;
+    background-color: #D2D2D2;
+    /*width: 1440px;*/
 }
 .title {
     font-weight: 600;
@@ -34,7 +37,7 @@ main {
     justify-content: space-evenly;
     margin-top: 10px;
     margin-bottom: 20px;
-    width: 1350px;
+    max-width: 1350px;
 }
 .tiles {
     display: flex;

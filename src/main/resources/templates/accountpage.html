@@ -31,6 +31,7 @@
         </div>
         <div class="fields">
           <label for="name">Full Name</label>
+          <input class="inputs" type="text" name="id" hidden="hidden" th:value="${info.id}">
           <input class="inputs" type="text" name="name" placeholder="Full Name..." th:value="${info.getName()}">
           <label for="email">Email address</label>
           <input class="inputs"  type="email" name="email" placeholder="Email address..." th:value="${info.getEmail()}">

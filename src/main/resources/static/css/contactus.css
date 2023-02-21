@@ -6,15 +6,18 @@
 body {
     flex-wrap: wrap;
     font-family: 'Poppins', sans-serif;
-    background-color: #D2D2D2;
+    background-color: #f28e1c;
+    overflow-x: hidden;
 }
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 .contact-main-wrap{
     font-family: 'Poppins', sans-serif;
     margin-top: 15px;
     margin-bottom: 15px;
+    background-color: #D2D2D2;
 }
 .contact-us{
     border-radius: 10px;
@@ -264,6 +267,9 @@ html {
     .contact-in:nth-child(3) {
         flex: 100%;
     }
+    .contact-in iframe {
+        display: none;
+    }
 
 }
 
@@ -277,7 +283,7 @@ html {
     }
 
     .contact-in:nth-child(3) {
-        flex: 100%;
+        display: 100%;
     }
 
 }

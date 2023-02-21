@@ -6,23 +6,30 @@
 body {
     flex-wrap: wrap;
     font-family: 'Poppins', sans-serif;
-    background-color: #D2D2D2;
+    background-color: #f28e1c;
+    overflow-x: hidden;
 }
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 /* main */
 main {
     display: flex;
-    height: 320px;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    background-color: #D2D2D2;
 }
 .main-div {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    width: 1000px;
-    margin-left: 100px;
-    margin-top: 80px;
+    max-width: 1000px;
+    /*margin-left: 100px;*/
+    margin-top: 20px;
 }
 h2 {
     color: #f28e1c;

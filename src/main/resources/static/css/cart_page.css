@@ -6,10 +6,12 @@
 body {
     flex-wrap: wrap;
     font-family: 'Poppins', sans-serif;
-    background-color: #D2D2D2;
+    background-color: #f28e1c;
+    overflow-x: hidden;
 }
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* For Header */
@@ -56,6 +58,7 @@ main {
     justify-content: space-around;
     align-items: center;
     margin-top: .5%;
+    background-color: #D2D2D2;
     /* height: calc(92vh - 100px); */
 }
 .order-table {

@@ -15,14 +15,13 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "kos_users", uniqueConstraints = {
-        @UniqueConstraint(name = "kos_users_email", columnNames = "email")})
+@Table(name = "kos_users")
 public class User implements UserDetails, UserInterface {
     @Id
     @SequenceGenerator(name = "kos_users_seq_gen", sequenceName = "kos_users_id_seq", allocationSize = 1)
     @GeneratedValue(generator = "kos_users_seq_gen", strategy = GenerationType.SEQUENCE)
     private Integer id;
-    @Column(name = "Full_Name")
+    @Column(name = "Full_Name", nullable = false)
     private String name;
     @Column(name = "email", nullable = false)
     private String email;
