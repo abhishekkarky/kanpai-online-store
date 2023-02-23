@@ -83,18 +83,11 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Name of User</td>
-            <td>Email of User</td>
-            <td>Address of User</td>
-            <td>Number of User</td>
-            <td><button type="submit">Delete</button></td>
-          </tr>
           <tr class="tr-table" th:each="list:${userlist}">
-            <td th:text="${list.name}">Name of User</td>
-            <td th:text="${list.email}">Email of User</td>
-            <td th:text="${list.address}">Address of User</td>
-            <td th:text="${list.number}">Number of User</td>
+            <td th:text="${list.name}"></td>
+            <td th:text="${list.email}"></td>
+            <td th:text="${list.address}"></td>
+            <td th:text="${list.number}"></td>
             <td><a class="delete_button" th:href="@{~/admin/deleteUser/}+${list.id}">Delete</a></td>
           </tr>
           </tbody>

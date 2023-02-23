@@ -9,12 +9,12 @@ import java.util.List;
 public interface ProductCartService {
     List<ProductCart> fetchAll();
 
-    String save(ProductCartPojo productCartPojo);
+    ProductCartPojo save(ProductCartPojo productCartPojo);
 
-    String saveToCart(Integer id, Principal principal);
+//    String saveToCart(Integer id, Principal principal);
     ProductCart fetchOne(Integer id);
 
-    String deleteFromCart(Integer id);
+    void deleteFromCart(Integer id);
 
     String updateQuantity(ProductCart productCart);
 

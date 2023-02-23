@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -75,69 +75,22 @@
         <table class="content-table" id="table_id">
           <thead>
           <tr>
+            <th>User Id</th>
+            <th>Product Id</th>
             <th>Product Name</th>
-            <th>Volume</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total Amount</th>
-            <th>Status</th>
+            <th>Product Quantity</th>
+            <th>Product Price</th>
             <th>Action</th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Whiskey</td>
-            <td>800ml</td>
-            <td>1</td>
-            <td>4000</td>
-            <td>4000</td>
-            <td>
-              <fieldset data-role="controlgroup">
-                <label for="Confirm">Confirming</label>
-                <input type="checkbox" name="favcolor" id="red" value="red" checked>
-                <label for="Ongoing">Ongoing</label>
-                <input type="checkbox" name="favcolor" id="green" value="green">
-                <label for="Delivered">Delivered</label>
-                <input type="checkbox" name="favcolor" id="blue" value="blue" checked>
-              </fieldset>
-            </td>
-            <td><button class="delete-button" type="submit">Delete</button></td>
-          </tr>
-          <tr>
-            <td>Whiskey</td>
-            <td>800ml</td>
-            <td>1</td>
-            <td>4000</td>
-            <td>4000</td>
-            <td>
-              <fieldset data-role="controlgroup">
-                <label for="Confirm">Confirming</label>
-                <input type="checkbox" name="favcolor" id="red" value="red" checked>
-                <label for="Ongoing">Ongoing</label>
-                <input type="checkbox" name="favcolor" id="green" value="green">
-                <label for="Delivered">Delivered</label>
-                <input type="checkbox" name="favcolor" id="blue" value="blue" checked>
-              </fieldset>
-            </td>
-            <td><button type="submit">Delete</button></td>
-          </tr>
-          <tr>
-            <td>Whiskey</td>
-            <td>800ml</td>
-            <td>1</td>
-            <td>4000</td>
-            <td>4000</td>
-            <td>
-              <fieldset data-role="controlgroup">
-                <label for="Confirm">Confirming</label>
-                <input type="checkbox" name="confirming" id="confirm" value="confirming" checked>
-                <label for="Ongoing">Ongoing</label>
-                <input type="checkbox" name="checkbox" id="ongoing" value="Ongoing">
-                <label for="Delivered">Delivered</label>
-                <input type="checkbox" name="delivered" id="delivered" value="delivered" checked>
-              </fieldset>
-            </td>
-            <td><button type="submit">Delete</button></td>
+          <tr th:each="item:${cartItems}">
+            <td th:text="${item.getUser().name}">User Id</td>
+            <td th:text="${item.getProduct().id}">Order Id</td>
+            <td th:text="${item.getProduct().name}">Name</td>
+            <td th:text="${item.getProduct().quantity}">Quantity</td>
+            <td th:text="${item.getProduct().price}">Price</td>
+            <td><a class="delete-button" th:href="@{~/admin/removeProduct/}+${item.id}">Delete</a></td>
           </tr>
           </tbody>
         </table>

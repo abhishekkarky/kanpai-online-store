@@ -157,6 +157,9 @@ public class UserServiceImpl implements UserService {
         message.setText("Your OTP for resetting your password is: " + OTP);
         getJavaMailSender.send(message);
     }
+    public Long countRows() {
+        return userRepo.countAllRows();
+    }
 
 }
 

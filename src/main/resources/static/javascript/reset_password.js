@@ -12,9 +12,6 @@ form.addEventListener("submit", (e) => {
     if (!email.value.match(format)) {
         messages.push("Enter a valid email address")
     }
-    if (otp.value < 6 || otp.value > 6) {
-        messages.push("Enter valid OTP")
-    }
     if (password.value.length < 8 || password.value.length > 12) {
         messages.push("Password must be length of 8-12")
     }

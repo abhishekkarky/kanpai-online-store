@@ -1,6 +1,7 @@
 package com.system.kanpaionlinestore.service.impl;
 
 import com.system.kanpaionlinestore.entity.Notifications;
+import com.system.kanpaionlinestore.entity.Product;
 import com.system.kanpaionlinestore.entity.User;
 import com.system.kanpaionlinestore.exception.AppException;
 import com.system.kanpaionlinestore.pojo.NotificationsPojo;
@@ -20,7 +21,12 @@ public class NotificationServiceImpl implements NotificationsService {
 
     @Override
     public String save(NotificationsPojo notificationsPojo) {
-        Notifications notifications = new Notifications();
+        Notifications notifications;
+        if (notificationsPojo.getId() != null) {
+            notifications = notificationsRepo.findById(notificationsPojo.getId()).orElseThrow(() -> new RuntimeException("Not Found"));
+        } else {
+            notifications = new Notifications();
+        }
         if(notifications.getId()!=null){
             notifications.setId(notificationsPojo.getId());
         }

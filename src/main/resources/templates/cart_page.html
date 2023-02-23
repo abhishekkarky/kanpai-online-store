@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -22,7 +23,7 @@
         <div class="cart-container">
             <div class="order-table">
                 <form>
-                    <table class="content-table">
+                    <table class="content-table" id="table_id">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -33,44 +34,32 @@
                         </thead>
                         <tbody>
                         <tr th:each="cartProduct:${cartItems}">
-                            <td th:text="${cartProduct.name}"></td>
-                            <td th:text="${cartProduct.quantity}"></td>
-                            <td th:text="${cartProduct.price}"></td>
-                            <td><a class="delete_button">Delete</a></td>
+                            <td th:text="${cartProduct.getProduct().name}"></td>
+                            <td th:text="${cartProduct.getProduct().quantity}"></td>
+                            <td th:text="${cartProduct.getProduct().price}"></td>
+                            <td><a class="delete_button" th:href="@{~/cart/remove/}+${cartProduct.id}">Delete</a></td>
                         </tr>
                         </tbody>
                     </table>
-                </form>
-            </div>
+                    <script
+                            type="text/javascript"
+                            charset="utf8"
+                            src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+                    ></script>
+                    <script
+                            type="text/javascript"
+                            charset="utf8"
+                            src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+                        document.getElementsByClassName()
+                    </script>
+                    <script>
+                        $(function() {
+                            $("#table_id").dataTable();
+                        });
+                    </script>
 
-            <div class="for-other">
-                <div class="for-total">
-                    <div class="total-title">
-                        <h4>Total</h4>
-                    </div>
-                    <div class="amount">
-                        <h4>4000</h4>
-                    </div>
-                </div>
-                <div class="for-total">
-                    <div class="total-title">
-                        <h4>Delivery Charge</h4>
-                    </div>
-                    <div class="amount">
-                        <h4>Free</h4>
-                    </div>
-                </div>
-                <div class="for-total">
-                    <div class="total-title">
-                        <h4>Grand Total</h4>
-                    </div>
-                    <div class="amount">
-                        <h4>4000</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="checkout-button">
-                <button id="checkout" class="checkout">Checkout</button>
+                    <br><br>
+                </form>
             </div>
         </div>
     </main>

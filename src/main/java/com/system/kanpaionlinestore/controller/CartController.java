@@ -28,24 +28,27 @@ public class CartController {
 
     @GetMapping()
     public String displayCart(Principal principal, Model model, ProductCartPojo productCartPojo){
+        if (principal!=null) {
+            model.addAttribute("info", userService.findByEmail(principal.getName()));
+        }
+        assert principal != null;
         Integer id = userService.findByEmail(principal.getName()).getId();
         List<ProductCart> list = productCartService.fetchAll(id);
         model.addAttribute("cart", productCartPojo);
         model.addAttribute("cartItems", list);
-
         return "cart_page";
     }
-
-    @GetMapping("/add/{id}")
-    public String saveToCart(@PathVariable Integer id, Principal principal){
-        productCartService.saveToCart(id, principal);
-        return "redirect:/cart";
-    }
+//
+//    @GetMapping("/add/{id}")
+//    public String saveToCart(@PathVariable Integer id, Principal principal){
+//        productCartService.save(id, principal);
+//        return "redirect:/cart";
+//    }
 
     @PostMapping("/updateQuantity/{id}")
     public String updateQuantity(@Valid ProductCartPojo productCartPojo){
         ProductCart productCart = productCartService.fetchOne(productCartPojo.getId());
-        productCart.setQuantity(productCartPojo.getQuantity());
+//        productCart.setQuantity(productCartPojo.getQuantity());
         productCartService.updateQuantity(productCart);
         return "redirect:/cart";
     }

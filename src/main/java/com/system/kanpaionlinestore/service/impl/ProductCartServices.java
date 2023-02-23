@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -26,29 +27,15 @@ public class ProductCartServices implements ProductCartService {
     }
 
     @Override
-    public String save(ProductCartPojo productCartPojo) {
+    public ProductCartPojo save(ProductCartPojo productCartPojo) {
         ProductCart productCart = new ProductCart();
         if(productCartPojo.getId()!=null){
             productCart.setId(productCartPojo.getId());
         }
-        productCart.setName(productCartPojo.getName());
-        productCart.setQuantity(productCartPojo.getQuantity());
-        productCart.setPrice(productCartPojo.getPrice());
+        productCart.setProduct(productRepo.findById(productCartPojo.getProduct_id()).orElseThrow());
+        productCart.setUser(userRepo.findById(productCartPojo.getUser_id()).orElseThrow());
         productCartRepo.save(productCart);
-        return "saved";
-    }
-
-    @Override
-    public String saveToCart(Integer id, Principal principal) {
-        ProductCart productCart = new ProductCart();
-        productCart.setUser(userRepo.findByEmail(principal.getName()).orElseThrow());
-        productCart.setProduct(productRepo.findById(id).orElseThrow());
-        productCart.setName(productCart.getName());
-        productCart.setPrice(productCart.getPrice());
-        productCart.setQuantity(1);
-        productCartRepo.save(productCart);
-
-        return "Saved";
+        return new ProductCartPojo();
     }
 
     @Override
@@ -57,9 +44,8 @@ public class ProductCartServices implements ProductCartService {
     }
 
     @Override
-    public String deleteFromCart(Integer id) {
+    public void deleteFromCart(Integer id) {
         productCartRepo.deleteById(id);
-        return "Deleted";
     }
 
     @Override
@@ -70,15 +56,21 @@ public class ProductCartServices implements ProductCartService {
 
     @Override
     public List<ProductCart> fetchAll(Integer id) {
-        List<ProductCart> allItems = productCartRepo.fetchAll(id).orElseThrow();
-        for (ProductCart productCart : allItems){
-            productCart.setProduct(Product.builder()
-                    .id(productCart.getProduct().getId())
-                    .quantity(productCart.getProduct().getQuantity())
-                    .name(productCart.getProduct().getName())
-                    .price(productCart.getProduct().getPrice())
-                    .build());
-        }
-        return allItems;
+        return findAllInList(productCartRepo.findAll());
+    }
+    public List<ProductCart> findAllInList(List<ProductCart> list){
+        Stream<ProductCart> allCart=list.stream().map(productCart ->
+                        ProductCart.builder()
+                                .id(productCart.getId())
+                                .product(productCart.getProduct())
+                                .user(productCart.getUser())
+                                .build()
+        );
+
+        list = allCart.toList();
+        return list;
+    }
+    public Long countRows() {
+        return productCartRepo.countAllRows();
     }
 }

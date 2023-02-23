@@ -8,6 +8,8 @@ import com.system.kanpaionlinestore.service.*;
 import com.system.kanpaionlinestore.service.impl.ProductCartServices;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,6 +26,7 @@ public class UserController {
     private final UserService userService;
     private final NotificationsService notificationsService;
     private final QueryService queryService;
+    private final JavaMailSender getJavaMailSender;
 
     @GetMapping("/create")
     public String createUser(Model model) {
@@ -33,6 +36,15 @@ public class UserController {
 
     @PostMapping("/save")
     public String saveUser(@Valid UserPojo userpojo) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(userpojo.getEmail());
+        message.setSubject("Welcome to our Kanpai online store!");
+        message.setText("I would like to take this opportunity to express my sincerest appreciation for registering with our site. It is our pleasure to welcome you to our family.\n" +
+                "\n" +
+                "We understand that there are numerous choices available when it comes to online platforms, and we are honored that you have chosen ours. Rest assured, we are committed to providing you with a top-notch user experience, with the latest news, insights, and tools to keep you informed and engaged.\n" +
+                "\n" +
+                "Once again, thank you for joining us.");
+        getJavaMailSender.send(message);
         userService.save(userpojo);
         return "redirect:/login";
     }
@@ -82,19 +94,25 @@ public class UserController {
         return "redirect:/user/profile";
     }
 
-    @GetMapping("/contact")
-    public String getContactUsPage(Model model, Principal principal) {
-        if (principal!=null) {
-            model.addAttribute("info", userService.findByEmail(principal.getName()));
-        }
-        model.addAttribute("queries", new QueriesPojo());
-        return "contactus";
-    }
-    @PostMapping("/saveQueries")
-    public String saveQuery(@Valid QueriesPojo queriesPojo) {
-        queryService.save(queriesPojo);
-        return "redirect:/landing";
-    }
+//    @GetMapping("/contact")
+//    public String getContactUsPage(Model model, Principal principal) {
+//        if (principal!=null) {
+//            model.addAttribute("info", userService.findByEmail(principal.getName()));
+//        }
+//
+//        model.addAttribute("queries", new QueriesPojo());
+//        return "contactus";
+//    }
+//    @PostMapping("/saveQueries")
+//    public String saveQuery(@Valid QueriesPojo queriesPojo) {
+//        SimpleMailMessage message = new SimpleMailMessage();
+//        message.setTo(queriesPojo.getEmail());
+//        message.setSubject("Kanpai Online Store");
+//        message.setText("Hello there pretty stranger!!! Thank you for contacting us. We will contact you back ASAP.");
+//        getJavaMailSender.send(message);
+//        queryService.save(queriesPojo);
+//        return "redirect:/landing";
+//    }
 
     @GetMapping("/request-password-reset")
     public String requestPasswordReset() {

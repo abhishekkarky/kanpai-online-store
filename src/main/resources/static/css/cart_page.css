@@ -14,43 +14,6 @@ html {
     overflow-x: hidden;
 }
 
-/* For Header */
-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100px;
-    border-bottom: 2px solid black;
-}
-.logo {
-    width: 50%;
-}
-.head-img {
-    height: 100%;
-    width: 20%;
-}
-ul {
-    display: flex;
-    list-style-type: none;
-}
-ul li a {
-    padding: 0 15px;
-    text-decoration: none;
-    color: black;
-    display: inline-block;
-}
-li a::after {
-    content: '';
-    display: block;
-    height: 4px;
-    width: 0;
-    background: #000000;
-    transition: all .5s;
-}
-li a:hover::after {
-    width: 100%;
-}
-
 /* For main */
 main {
     display: flex;
@@ -75,16 +38,18 @@ main {
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     background-color: #382c25;
-    width: 100%;
 }
 .content-table thead tr {
     background-color: #f28e1c;
-    color: #ffffff;
+    color: black;
     text-align: left;
     font-weight: bold;
+    height: 40px;
 }
 .content-table tr {
+    height: 50px;
     width: 10px;
+    background-color: #3A3A3A;
 }
 .content-table th {
     padding: 12px 15px;
@@ -93,15 +58,24 @@ main {
 }
 .content-table td {
     padding: 12px 15px;
+    color: black;
     border-bottom: 1px solid #dddddd;
 }
+.tr-table {
+    background-color: #3A3A3A;
+}
+
 .delete_button {
-    font-size: 15px;
-    width: 120px;
-    height: 40px;
-    border-radius: 10px;
-    background-color: rgb(237, 79, 51);
+    text-decoration: none;
     cursor: pointer;
+    color: black;
+    font-size: 13px;
+    width: 90px;
+    height: 40px;
+    border-radius: 5px;
+}
+.delete_button:hover {
+    color: red;
 }
 fieldset {
     display: flex;
@@ -239,62 +213,4 @@ fieldset {
     background-color: rgb(207, 203, 203);
 }
 
-/* For Footer */
-footer {
-    margin-top: 1%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    height: 25vh;
-    border-top: 2px solid black;
-}
-.footer-logo {
-    justify-content: center;
-    align-items: center;
-    width: 15%;
-    border-right: 2px solid black;
-}
-.footer-pic {
-    width: 100%;
-}
-.footer-nav-a {
-    display: flex;
-    width: 15%;
-    border-right: 2px solid black;
-}
-.footer-ul-one {
-    display: flex;
-    flex-direction: column;
-    list-style-type: disc;
-}
-.footer-a {
-    padding: 8px 0px;
-    text-decoration: none;
-    color: black;
-    display: inline-block;
-    font-weight: bold;
-}
-.footer-nav-b {
-    display: flex;
-    width: 15%;
-}
-.footer-ul-two {
-    margin-top: 2%;
-    display: flex;
-    flex-direction: column;
-    list-style-type: disc;
-}
-.footer-b {
-    margin-top: 1%;
-    padding: 8px 20px;
-    text-decoration: none;
-    color: black;
-    display: inline-block;
-    font-weight: bold;
-}
-h5 {
-    font-size: 9px;
-}
 

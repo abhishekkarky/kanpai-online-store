@@ -81,12 +81,6 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Name of person</td>
-            <td>Email of the person</td>
-            <td>Subject of query</td>
-            <td>Message in description</td>
-          </tr>
           <tr th:each="query:${queries}">
             <td th:text="${query.name}">Name of person</td>
             <td th:text="${query.email}">Email of the person</td>

@@ -13,4 +13,7 @@ public interface UserRepo extends JpaRepository<User, Integer> {
     Optional<User> findByEmail(String email);
     User findByEmailAndOTP(String email, String OTP);
 
+    @Query(value = "select COUNT(*) from kos_users", nativeQuery = true)
+    Long countAllRows();
+
 }

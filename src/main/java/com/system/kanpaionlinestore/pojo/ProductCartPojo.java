@@ -14,14 +14,13 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductCartPojo {
     private Integer id;
-    private String name;
-    private Integer quantity;
-    private Integer price;
+
+    private Integer user_id;
+    private Integer product_id;
 
     public ProductCartPojo(ProductCart productCart) {
         this.id = productCart.getId();
-        this.name = productCart.getName();
-        this.quantity = productCart.getQuantity();
-        this.price = productCart.getPrice();
+        this.user_id = productCart.getUser().getId();
+        this.product_id = productCart.getProduct().getId();
     }
 }

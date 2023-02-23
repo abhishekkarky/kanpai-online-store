@@ -28,7 +28,7 @@
     <div class="contact-wrap">
       <div class="contact-in">
         <h1>Send a Message</h1>
-        <form th:method="post" th:action="@{/user/saveQueries}" th:object="${queries}">
+        <form th:method="post" th:action="@{/contact/saveQueries}" th:object="${queries}">
           <input type="text" name="name" id="name" placeholder="Full Name" class="contact-in-input" required th:field="*{name}">
           <input type="email" name="email" id="email" placeholder="Email" class="contact-in-input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required th:field="*{email}">
           <input type="text" name="subject" id="subject" placeholder="Subject" class="contact-in-input" required th:field="*{subject}">

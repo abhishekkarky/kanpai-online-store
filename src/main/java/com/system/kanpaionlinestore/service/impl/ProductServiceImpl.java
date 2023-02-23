@@ -1,17 +1,21 @@
 package com.system.kanpaionlinestore.service.impl;
 
 import com.system.kanpaionlinestore.entity.Product;
+import com.system.kanpaionlinestore.entity.ProductCart;
 import com.system.kanpaionlinestore.pojo.ProductPojo;
 import com.system.kanpaionlinestore.repo.ProductRepo;
 import com.system.kanpaionlinestore.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -20,13 +24,19 @@ public class ProductServiceImpl implements ProductService {
     public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/kanpai_store";
     @Override
     public List<Product> fetchAll() {
-        return this.productRepo.findAll();
+        return findAllInList(productRepo.findAll());
     }
 
     @Override
     public String save(ProductPojo productPojo) throws IOException {
-        Product product=new Product();
-        if(product.getId()!=null){
+        Product product;
+        if (productPojo.getId() != null) {
+            product = productRepo.findById(productPojo.getId()).orElseThrow(() -> new RuntimeException("Not Found"));
+        } else {
+            product = new Product();
+        }
+
+        if(productPojo.getId()!=null){
             product.setId(productPojo.getId());
         }
         product.setName(productPojo.getName());
@@ -54,5 +64,38 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteById(Integer id) {
         productRepo.deleteById(id);
+    }
+
+
+    public List<Product> findAllInList(List<Product> list){
+        Stream<Product> allCart=list.stream().map(product ->
+                Product.builder()
+                        .id(product.getId())
+                        .imageBase64(getImageBase64(product.getPhoto()))
+                        .name(product.getName())
+                        .quantity(product.getQuantity())
+                        .price(product.getPrice())
+                        .build()
+        );
+
+        list = allCart.toList();
+        return list;
+    }
+
+    public String getImageBase64(String fileName) {
+        String filePath = System.getProperty("user.dir") + "/kanpai_store/";
+        File file = new File(filePath + fileName);
+        byte[] bytes = new byte[0];
+        try {
+            bytes = Files.readAllBytes(file.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        String base64 = Base64.getEncoder().encodeToString(bytes);
+        return base64;
+    }
+    public Long countRows() {
+        return productRepo.countAllRows();
     }
 }

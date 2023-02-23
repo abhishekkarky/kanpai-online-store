@@ -64,6 +64,14 @@
 .navbar-link:hover::after {
     width: 100%;
 }
+.active {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #000000;
+    transition: all .5s;
+}
 @media (max-width: 62em) {
     .mobile-navbar-btn {
         display: block;

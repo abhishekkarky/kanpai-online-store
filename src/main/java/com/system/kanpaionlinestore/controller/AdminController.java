@@ -1,10 +1,10 @@
 package com.system.kanpaionlinestore.controller;
-import com.system.kanpaionlinestore.entity.Notifications;
-import com.system.kanpaionlinestore.entity.Product;
-import com.system.kanpaionlinestore.entity.Queries;
-import com.system.kanpaionlinestore.entity.User;
+import com.system.kanpaionlinestore.entity.*;
 import com.system.kanpaionlinestore.pojo.*;
 import com.system.kanpaionlinestore.service.*;
+import com.system.kanpaionlinestore.service.impl.ProductCartServices;
+import com.system.kanpaionlinestore.service.impl.ProductServiceImpl;
+import com.system.kanpaionlinestore.service.impl.UserServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -29,11 +29,21 @@ public class AdminController {
     private final NotificationsService notificationsService;
     private final QueryService queryService;
     private final UserService userService;
+    private final ProductCartService productCartService;
+    private final ProductServiceImpl productServiceImpl;
+    private final ProductCartServices productCartServices;
+    private final UserServiceImpl userServiceImpl;
     @GetMapping("/dashboard")
     public String getAdminPage(Model model, Principal principal) {
         if (principal!=null) {
             model.addAttribute("info", userService.findByEmail(principal.getName()));
         }
+        Long products=productServiceImpl.countRows();
+        model.addAttribute("pro",products);
+        Long productCarts=productCartServices.countRows();
+        model.addAttribute("proCart",productCarts);
+        Long totalUsers=userServiceImpl.countRows();
+        model.addAttribute("totalUser",totalUsers);
         return "admin_dashboard";
     }
 
@@ -100,7 +110,16 @@ public class AdminController {
         if (principal!=null) {
             model.addAttribute("info", userService.findByEmail(principal.getName()));
         }
+        assert principal != null;
+        Integer id = userService.findByEmail(principal.getName()).getId();
+        List<ProductCart> list = productCartService.fetchAll(id);
+        model.addAttribute("cartItems", list);
         return "order_list";
+    }
+    @GetMapping("/removeProduct/{id}")
+    public String deleteOrderList(@PathVariable("id") Integer id){
+        productCartService.deleteFromCart(id);
+        return "redirect:/admin/order-list";
     }
     @GetMapping("/product-list")
     public String getProductList(Model model, Principal principal) {
@@ -108,15 +127,16 @@ public class AdminController {
             model.addAttribute("info", userService.findByEmail(principal.getName()));
         }
         List<Product> products = productService.fetchAll();
-        model.addAttribute("product", products.stream().map(product ->
-                Product.builder()
-                        .id(product.getId())
-                        .imageBase64(getImageBase64(product.getPhoto()))
-                        .name(product.getName())
-                        .quantity(product.getQuantity())
-                        .price(product.getPrice())
-                        .build()
-                ));
+//        model.addAttribute("product", products.stream().map(product ->
+//                Product.builder()
+//                        .id(product.getId())
+//                        .imageBase64(getImageBase64(product.getPhoto()))
+//                        .name(product.getName())
+//                        .quantity(product.getQuantity())
+//                        .price(product.getPrice())
+//                        .build()
+//                ));
+        model.addAttribute("product",products);
         return "productlist";
     }
     @GetMapping("/editProduct/{id}")
