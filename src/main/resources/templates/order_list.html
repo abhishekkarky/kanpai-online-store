@@ -75,7 +75,7 @@
         <table class="content-table" id="table_id">
           <thead>
           <tr>
-            <th>User Id</th>
+            <th>User Name</th>
             <th>Product Id</th>
             <th>Product Name</th>
             <th>Product Quantity</th>
@@ -85,11 +85,11 @@
           </thead>
           <tbody>
           <tr th:each="item:${cartItems}">
-            <td th:text="${item.getUser().name}">User Id</td>
-            <td th:text="${item.getProduct().id}">Order Id</td>
-            <td th:text="${item.getProduct().name}">Name</td>
-            <td th:text="${item.getProduct().quantity}">Quantity</td>
-            <td th:text="${item.getProduct().price}">Price</td>
+            <td th:text="${item.getUser().name}"></td>
+            <td th:text="${item.getProduct().id}"></td>
+            <td th:text="${item.getProduct().name}"></td>
+            <td th:text="${item.getProduct().quantity}"></td>
+            <td th:text="${item.getProduct().price}"></td>
             <td><a class="delete-button" th:href="@{~/admin/removeProduct/}+${item.id}">Delete</a></td>
           </tr>
           </tbody>
